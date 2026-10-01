@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-01T00:00:00Z",
+  "defaults": {
+    "fee_category_rates": {
+      "crypto": 0.07,
+      "sports": 0.05,
+      "economics": 0.05,
+      "culture": 0.05,
+      "weather": 0.05,
+      "other": 0.05,
+      "politics": 0.04,
+      "finance": 0.04,
+      "tech": 0.04,
+      "mentions": 0.04,
+      "geopolitics": 0.0
+    },
+    "fee_exponent": 1.0,
+    "fees_effective_from": "2026-03-30",
+    "fee_mode": "shares",
+    "risk_free_rate": 0.042,
+    "latency_ms": 500.0,
+    "latency_jitter_ms": 250.0,
+    "max_slip_ticks": 3,
+    "participation_cap": 0.5,
+    "max_position_frac": 0.2,
+    "min_order_size": 5.0,
+    "min_notional_usd": 1.0,
+    "convert_enabled": false,
+    "gas": {
+      "relayer_pays": true,
+      "gwei": 600.0,
+      "pol_usd": 0.11,
+      "units": {
+        "clob_fill": 0,
+        "split": 200000,
+        "merge": 200000,
+        "redeem": 150000,
+        "convert_base": 100000,
+        "convert_per_leg": 80000
+      }
+    },
+    "notes": {
+      "fee_category_rates": "Fallback only. Per-market Gamma feeSchedule always wins. Table from docs.polymarket.com/trading/fees search snippets (UNVERIFIED). Markets created before fees_effective_from are fee-free.",
+      "fee_mode": "Docs say taker fees are collected in shares on buys and in USDC on sells; 'usd' mode is kept as a sensitivity option.",
+      "risk_free_rate": "3-month T-bill, late Sep 2026 snippets 4.12-4.28% (UNVERIFIED). Results are also reported at rf=0.",
+      "convert_enabled": "NegRisk convert (k NO -> k-1 collateral + YES on the complement) exists in the V1 NegRiskAdapter; availability/fee for CLOB-V2 pUSD positions is UNVERIFIED, so headline results use the conservative False. Both variants are reported.",
+      "gas": "CLOB fills are settled by the operator (user pays $0). Units/gwei/POL price are rough UNVERIFIED estimates, used only for on-chain convert/redeem when relayer_pays is false.",
+      "latency_ms": "Signal-to-fill latency per leg = latency_ms + U(0, latency_jitter_ms). On polled data the fill book must be strictly newer than the decision book."
+    }
+  },
+  "baskets": [
+    {
+      "basket_id": "fed-oct-2026",
+      "title": "Fed Decision in October?",
+      "event_slug": "fed-decision-in-october-20260617190323537",
+      "event_id": null,
+      "slug_template": null,
+      "category": null,
+      "roles": [
+        "record",
+        "eda",
+        "backtest"
+      ],
+      "status": "unresolved",
+      "neg_risk": null,
+      "neg_risk_augmented": null,
+      "neg_risk_market_id": null,
+      "convert_fee_bips": 0.0,
+      "end_date": "2026-10-28T18:00:00Z",
+      "structural_discount_expected": false,
+      "discovered_at": null,
+      "notes": "Primary example. FOMC Oct 27-28 2026. Small n, short horizon; created 2026-06-17 so taker fees are likely on. Outcome list UNVERIFIED until discovery runs.",
+      "legs": []
+    },
+    {
+      "basket_id": "balance-of-power-2026",
+      "title": "Balance of Power: 2026 Midterms",
+      "event_slug": "balance-of-power-2026-midterms",
+      "event_id": null,
+      "slug_template": null,
+      "category": null,
+      "roles": [
+        "record",
+        "eda",
+        "pairing"
+      ],
+      "status": "unresolved",
+      "neg_risk": null,
+      "neg_risk_augmented": null,
+      "neg_risk_market_id": null,
+      "convert_fee_bips": 0.0,
+      "end_date": "2026-11-04T00:00:00Z",
+      "structural_discount_expected": false,
+      "discovered_at": null,
+      "notes": "Clean 4-way Senate x House partition; launched 2025-07 so probably fee-free (UNVERIFIED). Election Nov 3 2026.",
+      "legs": []
+    },
+    {
+      "basket_id": "house-2026",
+      "title": "Which party will win the House in 2026?",
+      "event_slug": "which-party-will-win-the-house-in-2026",
+      "event_id": null,
+      "slug_template": null,
+      "category": null,
+      "roles": [
+        "record",
+        "pairing"
+      ],
+      "status": "unresolved",
+      "neg_risk": null,
+      "neg_risk_augmented": null,
+      "neg_risk_market_id": null,
+      "convert_fee_bips": 0.0,
+      "end_date": "2026-11-04T00:00:00Z",
+      "structural_discount_expected": false,
+      "discovered_at": null,
+      "notes": "n=2 sanity basket and pairing leg for the Balance-of-Power marginal identity.",
+      "legs": []
+    },
+    {
+      "basket_id": "senate-2026",
+      "title": "Which party will win the Senate in 2026?",
+      "event_slug": "which-party-will-win-the-senate-in-2026",
+      "event_id": null,
+      "slug_template": null,
+      "category": null,
+      "roles": [
+        "record",
+        "pairing"
+      ],
+      "status": "unresolved",
+      "neg_risk": null,
+      "neg_risk_augmented": null,
+      "neg_risk_market_id": null,
+      "convert_fee_bips": 0.0,
+      "end_date": "2026-11-04T00:00:00Z",
+      "structural_discount_expected": false,
+      "discovered_at": null,
+      "notes": "n=2; pairing leg. Senate-control resolution rules (VP tie-break, independents) must be compared with Balance of Power before treating the identity as exact.",
+      "legs": []
+    },
+    {
+      "basket_id": "mlb-ws-2026",
+      "title": "MLB World Series Champion 2026",
+      "event_slug": "mlb-world-series-champion-2026",
+      "event_id": null,
+      "slug_template": null,
+      "category": null,
+      "roles": [
+        "record",
+        "eda"
+      ],
+      "status": "unresolved",
+      "neg_risk": null,
+      "neg_risk_augmented": null,
+      "neg_risk_market_id": null,
+      "convert_fee_bips": 0.0,
+      "end_date": "2026-11-01T00:00:00Z",
+      "structural_discount_expected": false,
+      "discovered_at": null,
+      "notes": "Many-leg stress test: eliminated teams resolve NO early and dust legs sit at the 0.001 tick. Check whether 'pro-baseball-world-series-champion-2026' is the canonical event.",
+      "legs": []
+    },
+    {
+      "basket_id": "btc-daily",
+      "title": "Bitcoin price on {date}?",
+      "event_slug": null,
+      "event_id": null,
+      "slug_template": "bitcoin-price-on-{month}-{day}-{year}",
+      "category": "crypto",
+      "roles": [
+        "optional"
+      ],
+      "status": "unresolved",
+      "neg_risk": null,
+      "neg_risk_augmented": null,
+      "neg_risk_market_id": null,
+      "convert_fee_bips": 0.0,
+      "end_date": null,
+      "structural_discount_expected": false,
+      "discovered_at": null,
+      "notes": "Optional crypto basket (pro-tip 2). Rolls daily; carries the highest taker fee rate (0.07). Use discovery add --slug-template ... --date YYYY-MM-DD.",
+      "legs": []
+    }
+  ],
+  "pairings": [
+    {
+      "pairing_id": "house-d-marginal",
+      "type": "linear_identity",
+      "description": "P(D wins House) = P(D Senate & D House) + P(R Senate & D House)",
+      "lhs": [
+        {
+          "basket_id": "house-2026",
+          "leg_label_regex": "(?i)democrat",
+          "coef": 1.0
+        }
+      ],
+      "rhs": [
+        {
+          "basket_id": "balance-of-power-2026",
+          "leg_label_regex": "(?i)^d\\W*senate.*d\\W*house",
+          "coef": 1.0
+        },
+        {
+          "basket_id": "balance-of-power-2026",
+          "leg_label_regex": "(?i)^r\\W*senate.*d\\W*house",
+          "coef": 1.0
+        }
+      ],
+      "theory_beta": 1.0,
+      "notes": "Leg labels are UNVERIFIED until discovery runs; an unmatched selector disables the pairing with a warning (never guessed)."
+    },
+    {
+      "pairing_id": "senate-d-marginal",
+      "type": "linear_identity",
+      "description": "P(D wins Senate) = P(D Senate & D House) + P(D Senate & R House)",
+      "lhs": [
+        {
+          "basket_id": "senate-2026",
+          "leg_label_regex": "(?i)democrat",
+          "coef": 1.0
+        }
+      ],
+      "rhs": [
+        {
+          "basket_id": "balance-of-power-2026",
+          "leg_label_regex": "(?i)^d\\W*senate.*d\\W*house",
+          "coef": 1.0
+        },
+        {
+          "basket_id": "balance-of-power-2026",
+          "leg_label_regex": "(?i)^d\\W*senate.*r\\W*house",
+          "coef": 1.0
+        }
+      ],
+      "theory_beta": 1.0,
+      "notes": "Control definitions may differ between the two events (VP tie-break, independents caucusing)."
+    }
+  ],
+  "synthetic_baskets": [
+    {
+      "basket_id": "SYNTHETIC_demo5",
+      "synthetic": true,
+      "seed": 7,
+      "params": {
+        "n_legs": 5,
+        "pi0": [
+          0.6,
+          0.3,
+          0.06,
+          0.03,
+          0.01
+        ],
+        "duration_s": 259200
+      }
+    },
+    {
+      "basket_id": "SYNTHETIC_bop4",
+      "synthetic": true,
+      "seed": 11,
+      "params": {
+        "n_legs": 4,
+        "pi0": [
+          0.45,
+          0.3,
+          0.15,
+          0.1
+        ],
+        "duration_s": 259200,
+        "leg_labels": [
+          "D Senate, D House",
+          "R Senate, D House",
+          "D Senate, R House",
+          "R Senate, R House"
+        ]
+      }
+    }
+  ]
+}

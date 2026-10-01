@@ -1,0 +1,14 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+timeout = 120
+addopts = "-ra -m 'not network and not slow'"
+markers = [
+  "slow: long numerical stress / statistical recovery tests (offline)",
+  "network: hits live Polymarket endpoints; run explicitly with -m network",
+]
+filterwarnings = [
+  "ignore::DeprecationWarning:jupyter_client.*",
+]

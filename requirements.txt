@@ -1,0 +1,8 @@
+# Runtime dependencies (Python 3.11+)
+websockets~=17.1
+requests~=2.34
+numpy~=2.4
+pandas~=3.0
+scipy~=1.17
+statsmodels~=0.15.0
+matplotlib~=3.11
