@@ -41,7 +41,7 @@
       }
     },
     "notes": {
-      "fee_category_rates": "Fallback only. Per-market Gamma feeSchedule always wins. Table from docs.polymarket.com/trading/fees search snippets (UNVERIFIED). Markets created before fees_effective_from are fee-free.",
+      "fee_category_rates": "Fallback only, used when a market has feesEnabled=true but no feeSchedule. Every live market checked on 2026-10-01 carried its own Gamma feeSchedule (Fed Oct 0.05, Balance of Power/House/Senate 0.04, MLB 0.03, BTC daily 0.07). The research claim that markets created before 2026-03-30 are fee-free did not hold (Balance of Power, created 2025-07-11, charges 0.04).",
       "fee_mode": "Docs say taker fees are collected in shares on buys and in USDC on sells; 'usd' mode is kept as a sensitivity option.",
       "risk_free_rate": "3-month T-bill, late Sep 2026 snippets 4.12-4.28% (UNVERIFIED). Results are also reported at rf=0.",
       "convert_enabled": "NegRisk convert (k NO -> k-1 collateral + YES on the complement) exists in the V1 NegRiskAdapter; availability/fee for CLOB-V2 pUSD positions is UNVERIFIED, so headline results use the conservative False. Both variants are reported.",

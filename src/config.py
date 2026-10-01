@@ -111,6 +111,9 @@ class Basket:
     notes: str = ""
     synthetic: bool = False
     slug_template: str | None = None
+    # Markets of the event that are NOT legs, with the reason: resolved_no | resolved_yes |
+    # placeholder | inactive_other | not_tradable. Kept for provenance (e.g. MLB eliminations).
+    excluded: tuple[Mapping[str, Any], ...] = ()
 
     @property
     def n_legs(self) -> int:
@@ -291,6 +294,7 @@ def basket_from_dict(d: Mapping[str, Any]) -> Basket:
         notes=str(d.get("notes", "") or ""),
         synthetic=synthetic,
         slug_template=d.get("slug_template"),
+        excluded=tuple(dict(x) for x in d.get("excluded", []) or []),
     )
 
 
@@ -320,6 +324,7 @@ def basket_to_dict(b: Basket) -> dict[str, Any]:
         "discovered_at": b.discovered_at,
         "notes": b.notes,
         "legs": [_leg_to_dict(l) for l in b.legs],
+        "excluded": [dict(x) for x in b.excluded],
     }
     if b.synthetic:
         d["synthetic"] = True
@@ -479,9 +484,12 @@ def resolve_fee_schedule(
     """Fee schedule for one market, in order of preference:
 
     1. Gamma ``feeSchedule {rate, exponent, takerOnly, rebateRate}`` or CLOB ``fd {r, e, to}``;
-    2. if ``feesEnabled`` (or unknown) and the market was created on/after
-       ``defaults.fees_effective_from``: the category rate from ``defaults``;
-    3. otherwise fee-free (markets created before 2026-03-30 are exempt).
+    2. if ``feesEnabled`` is true: the category rate from ``defaults`` (fallback table);
+    3. ``feesEnabled`` false -> fee-free; otherwise rate 0 with ``source="default"``.
+
+    Note: the research claim that markets created before 2026-03-30 are exempt did NOT
+    hold on live data (Balance of Power, created 2025-07-11, carries rate 0.04), so the
+    creation date is not used.
     """
     fs = market.get("feeSchedule") or market.get("fee_schedule")
     if isinstance(fs, Mapping) and fs.get("rate") is not None:
@@ -498,10 +506,6 @@ def resolve_fee_schedule(
                            taker_only=bool(fd.get("to", True)), source="clob_fd")
     fees_enabled = market.get("feesEnabled", market.get("fees_enabled"))
     if fees_enabled is False:
-        return FEE_FREE
-    created = _parse_dt(market.get("createdAt") or market.get("created_at"))
-    cutoff = _parse_dt(defaults.fees_effective_from + "T00:00:00+00:00")
-    if created is not None and cutoff is not None and created < cutoff:
         return FEE_FREE
     if fees_enabled and category:
         rate = defaults.fee_category_rates.get(category.lower())
