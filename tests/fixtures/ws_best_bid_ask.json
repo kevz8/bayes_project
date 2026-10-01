@@ -1,0 +1,10 @@
+{
+  "_fixture_note": "illustrative: shaped from the field list in research_api.md section 1.3 (best_bid_ask); values are not captured market data",
+  "event_type": "best_bid_ask",
+  "market": "0xf83fb46dd70a4459fcc441a8511701c463374c5c3c250f585d74fda85ddfb7c9",
+  "asset_id": "101007741586870489619361069512452187353898396425142157315847015703471254508752",
+  "best_bid": "0.73",
+  "best_ask": "0.77",
+  "spread": "0.04",
+  "timestamp": "1766789469958"
+}

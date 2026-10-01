@@ -1,0 +1,9 @@
+{
+  "_fixture_note": "captured shape [S14]; the timestamp was a placeholder in the source and is illustrative",
+  "event_type": "tick_size_change",
+  "asset_id": "65818619657568813474341868652308942079804919287380422192892211131408793125422",
+  "market": "0xbd31dc8a20211944f6b70f31557f1001557b59905b7738480ca09bd4532f84af",
+  "old_tick_size": "0.01",
+  "new_tick_size": "0.001",
+  "timestamp": "1740760245471"
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "event_type": "book",
+    "asset_id": "101007741586870489619361069512452187353898396425142157315847015703471254508752",
+    "market": "0xf83fb46dd70a4459fcc441a8511701c463374c5c3c250f585d74fda85ddfb7c9",
+    "bids": [
+      {
+        "price": "0.01",
+        "size": "510000"
+      },
+      {
+        "price": "0.02",
+        "size": "3100"
+      }
+    ],
+    "asks": [
+      {
+        "price": "0.99",
+        "size": "58.07"
+      },
+      {
+        "price": "0.97",
+        "size": "178.73"
+      }
+    ],
+    "timestamp": "1740759191594",
+    "hash": "c0e51b1cfdbcb1b2aec58feaf7b01004019a89c6"
+  },
+  {
+    "_fixture_note": "illustrative second book (array framing is illustrative); the first element is the captured ws_book.json message",
+    "event_type": "book",
+    "asset_id": "33333333333333333333333333333333333333333333333333333333333333333333333333333",
+    "market": "0xabababababababababababababababababababababababababababababababab",
+    "bids": [
+      {
+        "price": ".30",
+        "size": "100"
+      },
+      {
+        "price": ".32",
+        "size": "50"
+      }
+    ],
+    "asks": [
+      {
+        "price": ".36",
+        "size": "75"
+      },
+      {
+        "price": ".34",
+        "size": "20"
+      }
+    ],
+    "timestamp": "1740759191600",
+    "hash": "illustrative000000000000000000000000000001"
+  }
+]

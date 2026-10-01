@@ -1,0 +1,80 @@
+[
+  {
+    "_fixture_note": "illustrative: shaped from the field list in research_api.md section 2 (POST /books); arrays deliberately unsorted; values are not captured market data",
+    "market": "0xabababababababababababababababababababababababababababababababab",
+    "asset_id": "11111111111111111111111111111111111111111111111111111111111111111111111111111",
+    "timestamp": "1759363200123",
+    "hash": "illustrative000000000000000000000000000002",
+    "bids": [
+      {
+        "price": "0.44",
+        "size": "120"
+      },
+      {
+        "price": "0.46",
+        "size": "35.5"
+      },
+      {
+        "price": "0.45",
+        "size": "80"
+      }
+    ],
+    "asks": [
+      {
+        "price": "0.49",
+        "size": "60"
+      },
+      {
+        "price": "0.47",
+        "size": "12"
+      },
+      {
+        "price": "0.48",
+        "size": "200"
+      }
+    ],
+    "min_order_size": "5",
+    "tick_size": "0.01",
+    "neg_risk": true,
+    "last_trade_price": "0.46"
+  },
+  {
+    "_fixture_note": "illustrative: shaped from the field list in research_api.md section 2 (POST /books); arrays deliberately unsorted; values are not captured market data",
+    "market": "0xabababababababababababababababababababababababababababababababab",
+    "asset_id": "22222222222222222222222222222222222222222222222222222222222222222222222222222",
+    "timestamp": "1759363200125",
+    "hash": "illustrative000000000000000000000000000003",
+    "bids": [
+      {
+        "price": "0.51",
+        "size": "10"
+      },
+      {
+        "price": "0.53",
+        "size": "300"
+      },
+      {
+        "price": "0.52",
+        "size": "40"
+      }
+    ],
+    "asks": [
+      {
+        "price": "0.56",
+        "size": "25"
+      },
+      {
+        "price": "0.54",
+        "size": "88"
+      },
+      {
+        "price": "0.55",
+        "size": "5"
+      }
+    ],
+    "min_order_size": "5",
+    "tick_size": "0.01",
+    "neg_risk": true,
+    "last_trade_price": "0.53"
+  }
+]

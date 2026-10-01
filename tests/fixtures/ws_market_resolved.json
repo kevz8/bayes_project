@@ -1,0 +1,17 @@
+{
+  "_fixture_note": "illustrative: shaped from the field list in research_api.md section 1.3 (market_resolved); values are not captured market data",
+  "event_type": "market_resolved",
+  "id": "1000001",
+  "market": "0xabababababababababababababababababababababababababababababababab",
+  "assets_ids": [
+    "11111111111111111111111111111111111111111111111111111111111111111111111111111",
+    "22222222222222222222222222222222222222222222222222222222222222222222222222222"
+  ],
+  "winning_asset_id": "22222222222222222222222222222222222222222222222222222222222222222222222222222",
+  "winning_outcome": "No",
+  "event_message": {
+    "id": "90001",
+    "slug": "illustrative-election"
+  },
+  "timestamp": "1766789480000"
+}

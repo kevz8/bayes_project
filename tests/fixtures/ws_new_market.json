@@ -1,0 +1,25 @@
+{
+  "_fixture_note": "illustrative: shaped from the field list in research_api.md section 1.3 (new_market); values are not captured market data",
+  "event_type": "new_market",
+  "id": "1000001",
+  "question": "Will Candidate X win the illustrative election?",
+  "market": "0xabababababababababababababababababababababababababababababababab",
+  "slug": "will-candidate-x-win-illustrative",
+  "description": "Illustrative market.",
+  "assets_ids": [
+    "11111111111111111111111111111111111111111111111111111111111111111111111111111",
+    "22222222222222222222222222222222222222222222222222222222222222222222222222222"
+  ],
+  "outcomes": [
+    "Yes",
+    "No"
+  ],
+  "event_message": {
+    "id": "90001",
+    "ticker": "illustrative-election",
+    "slug": "illustrative-election",
+    "title": "Illustrative election winner",
+    "description": "Illustrative event."
+  },
+  "timestamp": "1766789470000"
+}
