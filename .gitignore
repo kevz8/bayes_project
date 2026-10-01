@@ -6,3 +6,6 @@ __pycache__/
 .env
 data/synthetic/
 data/historical_books/*/raw/*.tmp
+# Raw recordings are large (~10-15 MB/h gzipped); the repo carries exported top-of-book
+# tables, manifests (with sha256 of every raw file) and a small raw sample instead.
+data/historical_books/*/raw/

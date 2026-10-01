@@ -70,7 +70,7 @@
       "end_date": "2026-10-28T18:00:00Z",
       "structural_discount_expected": false,
       "discovered_at": null,
-      "notes": "Primary example. FOMC Oct 27-28 2026. Small n, short horizon; created 2026-06-17 so taker fees are likely on. Outcome list UNVERIFIED until discovery runs.",
+      "notes": "Primary example. 5 legs: 50+ bps decrease / 25 bps decrease / No change / 25 bps increase / 50+ bps increase. Not augmented. Taker fee rate 0.05 (Gamma feeSchedule). FOMC decision Oct 28 2026.",
       "legs": []
     },
     {
@@ -93,7 +93,7 @@
       "end_date": "2026-11-04T00:00:00Z",
       "structural_discount_expected": false,
       "discovered_at": null,
-      "notes": "Clean 4-way Senate x House partition; launched 2025-07 so probably fee-free (UNVERIFIED). Election Nov 3 2026.",
+      "notes": "5 legs incl. a named 'Other' outcome: Democrats Sweep / D Senate, R House / R Senate, D House / Republicans Sweep / Other. Taker fee rate 0.04 from Gamma feeSchedule even though created 2025-07-11 (the 'pre-2026-03-30 markets are fee-free' claim does not hold here). Election Nov 3 2026.",
       "legs": []
     },
     {
@@ -159,7 +159,7 @@
       "end_date": "2026-11-01T00:00:00Z",
       "structural_discount_expected": false,
       "discovered_at": null,
-      "notes": "Many-leg stress test: eliminated teams resolve NO early and dust legs sit at the 0.001 tick. Check whether 'pro-baseball-world-series-champion-2026' is the canonical event.",
+      "notes": "Many-leg stress test: 31 markets, 21 already closed (eliminated teams resolved NO), augmented event. Sports taker fee 0.03 (created 2026-01-21). Dust legs sit at the 0.001 tick.",
       "legs": []
     },
     {
@@ -192,24 +192,24 @@
       "lhs": [
         {
           "basket_id": "house-2026",
-          "leg_label_regex": "(?i)democrat",
+          "leg_label_regex": "(?i)^democrat",
           "coef": 1.0
         }
       ],
       "rhs": [
         {
           "basket_id": "balance-of-power-2026",
-          "leg_label_regex": "(?i)^d\\W*senate.*d\\W*house",
+          "leg_label_regex": "(?i)^democrats sweep$",
           "coef": 1.0
         },
         {
           "basket_id": "balance-of-power-2026",
-          "leg_label_regex": "(?i)^r\\W*senate.*d\\W*house",
+          "leg_label_regex": "(?i)^r senate, d house$",
           "coef": 1.0
         }
       ],
       "theory_beta": 1.0,
-      "notes": "Leg labels are UNVERIFIED until discovery runs; an unmatched selector disables the pairing with a warning (never guessed)."
+      "notes": "Leg labels verified against Gamma on 2026-10-01. Balance of Power also has an 'Other' leg, so the identity holds only up to P(Other) and differences in control definitions."
     },
     {
       "pairing_id": "senate-d-marginal",
@@ -218,24 +218,24 @@
       "lhs": [
         {
           "basket_id": "senate-2026",
-          "leg_label_regex": "(?i)democrat",
+          "leg_label_regex": "(?i)^democrat",
           "coef": 1.0
         }
       ],
       "rhs": [
         {
           "basket_id": "balance-of-power-2026",
-          "leg_label_regex": "(?i)^d\\W*senate.*d\\W*house",
+          "leg_label_regex": "(?i)^democrats sweep$",
           "coef": 1.0
         },
         {
           "basket_id": "balance-of-power-2026",
-          "leg_label_regex": "(?i)^d\\W*senate.*r\\W*house",
+          "leg_label_regex": "(?i)^d senate, r house$",
           "coef": 1.0
         }
       ],
       "theory_beta": 1.0,
-      "notes": "Control definitions may differ between the two events (VP tie-break, independents caucusing)."
+      "notes": "Leg labels verified against Gamma on 2026-10-01. Senate control rules (VP tie-break, independents caucusing) may differ between the two events; Balance of Power has an 'Other' leg."
     }
   ],
   "synthetic_baskets": [
