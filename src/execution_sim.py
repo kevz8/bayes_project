@@ -452,16 +452,16 @@ def liquidation_value_of(view: BookView, basket: Basket, yes_qty: Mapping[str, f
     therefore counts as 0 only when convert does not apply.
     """
     legs = basket.legs
-    value = sum(_sell_value(view, l.yes_token_id, "YES", yes_qty.get(l.yes_token_id, 0.0), l.fee) for l in legs)
-    x = [no_qty.get(l.yes_token_id, 0.0) for l in legs]
-    walk_all = sum(_sell_value(view, l.yes_token_id, "NO", xi, l.fee) for l, xi in zip(legs, x))
+    value = sum(_sell_value(view, lg.yes_token_id, "YES", yes_qty.get(lg.yes_token_id, 0.0), lg.fee) for lg in legs)
+    x = [no_qty.get(lg.yes_token_id, 0.0) for lg in legs]
+    walk_all = sum(_sell_value(view, lg.yes_token_id, "NO", xi, lg.fee) for lg, xi in zip(legs, x))
     best = walk_all
     if convert_enabled and basket.is_complete_partition and len(legs) >= 2:
         h = min(x)
         if h > QTY_EPS:
             bips = basket.convert_fee_bips if convert_fee_bips is None else convert_fee_bips
             conv = (len(legs) - 1) * h * (1.0 - bips / 1e4) - convert_gas_usd
-            conv += sum(_sell_value(view, l.yes_token_id, "NO", xi - h, l.fee) for l, xi in zip(legs, x))
+            conv += sum(_sell_value(view, lg.yes_token_id, "NO", xi - h, lg.fee) for lg, xi in zip(legs, x))
             best = max(best, conv)
     return value + best
 
@@ -696,15 +696,15 @@ class _BasketSnap:
 
     @property
     def s_bid(self) -> float:
-        return sum(l.bid if math.isfinite(l.bid) else 0.0 for l in self.legs.values())
+        return sum(lg.bid if math.isfinite(lg.bid) else 0.0 for lg in self.legs.values())
 
     @property
     def s_ask(self) -> float:
-        return sum(l.ask if math.isfinite(l.ask) else 1.0 for l in self.legs.values())
+        return sum(lg.ask if math.isfinite(lg.ask) else 1.0 for lg in self.legs.values())
 
     @property
     def s_mid(self) -> float:
-        return sum(l.token_mid("YES") for l in self.legs.values())
+        return sum(lg.token_mid("YES") for lg in self.legs.values())
 
     @property
     def spread_sum(self) -> float:
@@ -1169,7 +1169,7 @@ class ExecutionSimulator:
 
     @staticmethod
     def _position_empty(pos: _Position) -> bool:
-        return all(l.rem <= QTY_EPS and l.residual <= QTY_EPS for l in pos.legs.values())
+        return all(lg.rem <= QTY_EPS and lg.residual <= QTY_EPS for lg in pos.legs.values())
 
     @staticmethod
     def _record_exit_book(rec: TradeRecord, snap: _BasketSnap, s_mid: float) -> None:
@@ -1220,7 +1220,7 @@ class ExecutionSimulator:
         rec, a = pos.rec, pos.attr
         pos.state, pos.pending = "open", 0
         legs = list(pos.legs.values())
-        delivered = [l.fill.shares_delivered if l.fill is not None else 0.0 for l in legs]
+        delivered = [lg.fill.shares_delivered if lg.fill is not None else 0.0 for lg in legs]
         q = min(delivered) if delivered else 0.0
         q = q if q > QTY_EPS else 0.0
         material = False
@@ -1288,8 +1288,8 @@ class ExecutionSimulator:
             if math.isfinite(m):
                 leg.last_mid = m
             pos.exit_mids[leg.yes_id] = leg.last_mid
-        h = min(l.rem for l in legs) if legs else 0.0
-        extras = {l.yes_id: max(l.rem - h, 0.0) + l.residual for l in legs}
+        h = min(lg.rem for lg in legs) if legs else 0.0
+        extras = {lg.yes_id: max(lg.rem - h, 0.0) + lg.residual for lg in legs}
 
         def walk_value(leg: _LegPos, qty: float) -> float:
             ls = req.snap.legs.get(leg.yes_id)
@@ -1298,13 +1298,13 @@ class ExecutionSimulator:
             px, sz = ls.ladder(leg.token, "sell")
             return walk_book(px, sz, qty, side="sell", fee=leg.fee).cash_delta
 
-        v_extra = sum(walk_value(l, extras[l.yes_id]) for l in legs)
+        v_extra = sum(walk_value(lg, extras[lg.yes_id]) for lg in legs)
         values: dict[str, float] = {}  # insertion order breaks ties: convert, sell, hold
         if pos.side == Side.SHORT_BASKET and self.convert_available and h > QTY_EPS:
             values["convert"] = ((n - 1) * h * (1.0 - self.convert_fee_bips / 1e4)
                                  - cfg.gas.usd("convert", n) + v_extra)
         if cfg.exit_policy in ("z_exit", "hybrid"):
-            values["sell"] = sum(walk_value(l, h + extras[l.yes_id]) for l in legs)
+            values["sell"] = sum(walk_value(lg, h + extras[lg.yes_id]) for lg in legs)
         if cfg.exit_policy in ("hold", "hybrid"):
             payoff = h if pos.side == Side.LONG_BASKET else (n - 1) * h
             values["hold"] = payoff * self.discount_factor(req.t_ns) + v_extra
@@ -1365,14 +1365,14 @@ class ExecutionSimulator:
         n = len(legs)
         if n < 2:
             return
-        h = min([order.qty] + [l.rem for l in legs] + [self.portfolio.qty(l.yes_id, "NO") for l in legs])
+        h = min([order.qty] + [lg.rem for lg in legs] + [self.portfolio.qty(lg.yes_id, "NO") for lg in legs])
         if h <= QTY_EPS:
             return
         bips, gas = self.convert_fee_bips, self.cfg.gas.usd("convert", n)
         pos.cash_flow += self.portfolio.apply_convert(self.basket, h, bips, gas)
         gross = (n - 1) * h
         fee = gross * bips / 1e4
-        mids = sum(pos.exit_mids.get(l.yes_id, l.last_mid) for l in legs)
+        mids = sum(pos.exit_mids.get(lg.yes_id, lg.last_mid) for lg in legs)
         a = pos.attr
         a["gross_mid"] += h * mids
         a["payoff_adjustment"] += gross - h * mids
@@ -1390,7 +1390,7 @@ class ExecutionSimulator:
         pos.state = "open"
         if self._position_empty(pos):
             return [self._close(t, "sell" if pos.batch_kind == "hold" else pos.batch_kind)]
-        if any(l.rem > pos.expect_rem + QTY_EPS or l.residual > QTY_EPS for l in pos.legs.values()):
+        if any(lg.rem > pos.expect_rem + QTY_EPS or lg.residual > QTY_EPS for lg in pos.legs.values()):
             self.counters["partial_exits"] += 1
         return []
 
@@ -1415,19 +1415,19 @@ class ExecutionSimulator:
                   convert_gas_usd=self.cfg.gas.usd("convert", n))
 
         def value(with_residual: bool) -> float:
-            q = {l.yes_id: l.rem + (l.residual if with_residual else 0.0) for l in legs}
+            q = {lg.yes_id: lg.rem + (lg.residual if with_residual else 0.0) for lg in legs}
             yes = {k: v for k, v in q.items() if pos.legs[k].token == "YES"}
             no = {k: v for k, v in q.items() if pos.legs[k].token == "NO"}
             return liquidation_value_of(self.view, self.basket, yes, no, **kw)
 
         v_pos, v_all = value(False), value(True)
-        mids = sum(l.rem * self._now_mid(l) for l in legs)
+        mids = sum(lg.rem * self._now_mid(lg) for lg in legs)
         a["gross_mid"] += mids
         a["payoff_adjustment"] += v_pos - mids
         a["legging_cost"] -= v_all - v_pos
         rec.exit_proceeds += v_pos
         pos.mark_value = v_all
-        h = min((l.rem for l in legs), default=0.0)
+        h = min((lg.rem for lg in legs), default=0.0)
         rec.hold_value = (h if pos.side == Side.LONG_BASKET else (n - 1) * h) * self.discount_factor(t)
         if rec.t_exit_signal_ns is None:
             self._record_exit_book(rec, self._snapshot(t), math.nan)

@@ -11,7 +11,7 @@ import pytest
 
 from src import REPO_ROOT
 from src.config import Basket, Defaults, FeeSchedule, Leg
-from src.events import ASK, BID, DictBookView, Side
+from src.events import DictBookView, Side
 from src.execution_sim import (
     ATTRIBUTION_KEYS,
     ExecConfig,
@@ -83,7 +83,7 @@ def test_vwap_and_fee_usd_mode():
     # 10*0.04*0.40*0.60 + 40*0.04*0.41*0.59 = 0.096 + 0.38704
     assert f.fee == pytest.approx(0.48304, abs=1e-12)
     assert (f.top_price, f.worst_price, f.insufficient) == (0.40, 0.41, False)
-    assert [(l.price, l.qty) for l in f.levels] == [(0.40, 10.0), (0.41, 40.0)]
+    assert [(lv.price, lv.qty) for lv in f.levels] == [(0.40, 10.0), (0.41, 40.0)]
     assert f.shares_delivered == pytest.approx(50.0)
     assert f.cash_delta == pytest.approx(-(20.40 + 0.48304))
     assert f.fee_cost == pytest.approx(0.48304)
@@ -178,7 +178,7 @@ def test_fee_examples_and_symmetry():
 def test_fee_rounded_per_order_not_per_level():
     px, sz = [0.50, 0.51, 0.52], [0.0004] * 3
     f = walk_book(px, sz, 0.0012, fee=FeeSchedule(rate=0.04), fee_mode="usd")
-    per_level = [round(l.fee_unrounded, 5) for l in f.levels]
+    per_level = [round(lv.fee_unrounded, 5) for lv in f.levels]
     assert sum(per_level) == 0.0
     assert f.fee == pytest.approx(0.00001, abs=1e-15)            # 1.1992e-5 rounded once
 
