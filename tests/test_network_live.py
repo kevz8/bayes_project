@@ -27,12 +27,13 @@ def test_websocket_delivers_books():
         feed = MarketDataFeed(list(b.yes_ids), rest=ClobRestClient())
         task = asyncio.create_task(feed.run())
         await asyncio.sleep(15)
+        clean = all(feed.books.is_clean(a) for a in b.yes_ids)  # before stop(), which marks books dirty
         await feed.stop()
         task.cancel()
-        return feed
+        return feed, clean
 
-    feed = asyncio.run(go())
+    feed, clean = asyncio.run(go())
     if feed.stats.connects == 0:
         pytest.skip(f"WebSocket upgrade refused here: {feed.stats.last_error}")
-    assert feed.stats.data_frames > 0
-    assert all(feed.books.is_clean(a) for a in b.yes_ids)
+    assert feed.stats.data_frames > 0 and feed.stats.pongs > 0
+    assert clean
