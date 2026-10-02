@@ -8,7 +8,7 @@ import pytest
 from src import REPO_ROOT, RESULTS_ROOT
 
 NB = REPO_ROOT / "notebooks"
-NAMES = ["01_sum_to_one_eda.ipynb", "02_cross_market_ols.ipynb", "03_view_results.ipynb"]
+NAMES = ["01_sum_to_one_eda.ipynb", "02_view_results.ipynb"]
 
 
 @pytest.mark.parametrize("name", NAMES)

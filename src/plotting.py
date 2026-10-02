@@ -359,7 +359,7 @@ def save(fig: Figure, name: str, root: Path = FIGURES_ROOT, dpi: int = 150) -> P
     return path
 
 
-def show(fig: Figure, name: str | None = None, root: Path = FIGURES_ROOT) -> Path | None:
+def show(fig: Figure, name: str | None = None, root: Path = FIGURES_ROOT) -> None:
     """Notebook helper: render the figure inline, then save it (if ``name``) and close it."""
     try:
         from IPython.display import display
@@ -368,6 +368,6 @@ def show(fig: Figure, name: str | None = None, root: Path = FIGURES_ROOT) -> Pat
     except ImportError:  # pragma: no cover - outside IPython
         pass
     if name:
-        return save(fig, name, root=root)
-    plt.close(fig)
-    return None
+        save(fig, name, root=root)
+    else:
+        plt.close(fig)

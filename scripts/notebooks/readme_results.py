@@ -18,41 +18,33 @@ def _pct(x: float | None) -> str:
 
 def render(results: Path) -> str:
     m = json.loads((results / "metrics.json").read_text())
-    sel = json.loads((results / "selected_params.json").read_text())
     nb01 = json.loads((results / "dataset_info_01.json").read_text())
-    kinds = sorted(set(nb01.get("data_kinds", [])) | set(m.get("data_kind", "").split()))
     synthetic = nb01.get("synthetic") or m.get("data_kind") == "synthetic"
-    badge = ("**⚠ SYNTHETIC DATA — demonstration only**" if synthetic else
-             "**Data: REAL Polymarket data** — 1-minute `/prices-history` mids (execution books modelled around them, "
-             "calibrated on recorded live books) plus live WebSocket order books recorded by `src.recorder`.")
-    fed = next((r for r in nb01.get("basket_stats", []) if r["basket"] == m["basket"]), {})
-    h = m["headline"]
+    badge = ("**⚠ SYNTHETIC DATA: demonstration only**" if synthetic else
+             "**Data: real Polymarket prices** (30 days, one price per minute) plus live order books recorded by this project.")
+    stats = (nb01.get("basket_stats") or [{}])[0]
+    hurdle = next((h for h in nb01.get("hurdles", []) if h.get("basket") == m["basket"]), {})
     a = m["attribution_A"]
     lines = [badge, "",
-             f"**Basket:** `{m['basket']}` · **test split:** {m['test'][0][:16]} → {m['test'][1][:16]} UTC (untouched until notebook 03) · "
-             f"**parameters** (walk-forward, {sel['n_configs']} configs tried): N = {sel['window']} pushes, "
-             f"z_entry = {sel['z_entry']}, z_exit = {sel['z_exit']}", ""]
-    if fed:
-        lines += [f"**Notebook 01 (30 days, 1-minute):** mean ΣP = {fed['mean ΣP']:.4f} (HAC t = {fed['HAC t (mean=1)']:.1f}), "
-                  f"ADF p (Holm) = {fed['ADF p (Holm)']:.2g} for the sum vs unit roots in the liquid legs, AR(1) half-life ≈ "
-                  f"{fed['half-life (min)']:.0f} min.", ""]
-    lines += ["| strategy | trades | net P&L | return | Sharpe | max drawdown | gross mid-to-mid | spread | taker fees |",
-              "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
+             f"**Event:** Fed decision in October 2026 (`{m['basket']}`, 5 outcomes) · **test period:** {m['test'][0][:10]} → {m['test'][1][:10]}"]
+    if stats:
+        lines += ["", f"**Notebook 01:** the YES prices add up to **${stats['mean ΣP']:.4f}** on average (98% of the time between "
+                      f"${stats['q01']:.3f} and ${stats['q99']:.3f}). The total is pulled back to its average with a half-life of about "
+                      f"**{stats['half-life (min)'] / 60:.1f} hours**, while single outcomes drift like random walks. A round trip on all outcomes "
+                      f"costs about **${hurdle.get('round-trip hurdle', float('nan')):.3f}**, much more than the typical move of "
+                      f"**${hurdle.get('sd ΣP (1-min)', float('nan')):.3f}**."]
+    lines += ["", "**Notebook 02 (test period):**", "",
+              "| strategy | trades | profit / loss | return | win rate | max drawdown |", "|---|---:|---:|---:|---:|---:|"]
     for name, r in m["strategies"].items():
-        lines.append(f"| {name} | {int(r['trades'])} | {_usd(r['net P&L ($)'])} | {_pct(r['return'])} | {r['Sharpe (rf=4.2%)']} | "
-                     f"{_pct(r['max drawdown'])} | {_usd(r['gross mid ($)'])} | {_usd(r['spread ($)'])} | {_usd(r['fees ($)'])} |")
-    lines += ["", "![basket sum with z-score entries/exits (top) and simulated account equity (bottom)](results/figures/basket_signal_equity.png)", "",
-              f"**Attribution of the blueprint rule (A):** gross mid-to-mid {_usd(a['gross_mid'])}, half spread {_usd(a['half_spread'])}, "
-              f"taker fees {_usd(-a['fees'])} → net {_usd(a['net'])}. Max drawdown {_pct(h.get('max_dd'))} lasting "
-              f"{(h.get('max_dd_duration_s') or 0) / 3600:.0f} h{' (not recovered by the end of the sample)' if h.get('max_dd_censored') else ''}; "
-              f"Sharpe {h.get('sharpe_display')} ({h.get('sharpe_freq')} returns, rf = {h.get('rf_annual', 0):.1%})."]
-    sens = m.get("sensitivity", {})
-    if "no taker fee (maker-like)" in sens:
-        lines.append(f"Without taker fees the same trades net {_usd(sens['no taker fee (maker-like)']['net P&L ($)'])}: the n-leg spread alone "
-                     "absorbs the reversion the signal captures.")
+        wr = r.get("win rate")
+        lines.append(f"| {name} | {int(r['trades'])} | {_usd(r['profit/loss'])} | {_pct(r['return'])} | "
+                     f"{'n/a' if wr is None else f'{wr:.0%}'} | {_pct(r['worst drop (max drawdown)'])} |")
+    lines += ["", "![basket total with trades (top) and account balance (bottom)](results/figures/basket_signal_equity.png)", "",
+              f"**Where the money went (strategy A):** the signal earned {_usd(a['gross_mid'])} at midpoint prices, the bid/ask spread cost "
+              f"{_usd(a['half_spread'] + a['depth_slippage'])} and fees {_usd(-a['fees'])}, for a net of **{_usd(a['net'])}**."]
     if m.get("live_books"):
         lb = m["live_books"]
-        lines.append(f"**Recorded live books** ({lb['hours']:.1f} h so far): S_ask ≥ {lb['min S_ask']:.3f}, S_bid ≤ {lb['max S_bid']:.3f}, "
-                     f"n-leg spread {lb['median n-leg spread']:.3f}; pure-arbitrage trades found: {lb['arb trades']}.")
-    lines += ["", f"_Generated by `python scripts/build_notebooks.py --update-readme` from `results/metrics.json`; data kinds: {', '.join(kinds)}._"]
+        lines.append(f"In {lb['hours']:.1f} hours of recorded live order books a full YES set never cost less than ${lb['min S_ask']:.3f} "
+                     f"and never sold for more than ${lb['max S_bid']:.3f}: no risk-free trade was available.")
+    lines += ["", "_Generated by `python scripts/build_notebooks.py --update-readme` from `results/metrics.json`._"]
     return "\n".join(lines)

@@ -1,13 +1,11 @@
 {
  "notebook": "02",
  "data_kinds": [
+  "real_books",
   "real_prices"
  ],
  "baskets": [
-  "balance-of-power-2026",
-  "fed-oct-2026",
-  "house-2026",
-  "senate-2026"
+  "fed-oct-2026"
  ],
  "datasets": [
   {
@@ -27,126 +25,34 @@
    ],
    "seed": null,
    "notes": [
-    "Execution books are MODELLED: per-leg spread 50-bps-decrease=1 tick(s), 25-bps-decrease=1 tick(s), no-change=1 tick(s), 25-bps-increase=1 tick(s), 50-bps-increase=1 tick(s) (default 1 tick)."
+    "Execution books are MODELLED: per-leg spread 50-bps-decrease=1 tick(s), 25-bps-decrease=1 tick(s), no-change=1 tick(s), 25-bps-increase=1 tick(s), 50-bps-increase=1 tick(s) (medians of the recorded live books)."
    ],
    "synthetic": false,
-   "code_version": "6a2cb74"
+   "code_version": "ee41431"
   },
   {
-   "kind": "real_prices",
-   "basket_id": "balance-of-power-2026",
-   "title": "Balance of Power: 2026 Midterms",
-   "t_start": "2026-09-02T03:01:00",
-   "t_end": "2026-10-02T02:59:00",
-   "hours": 719.9666666666667,
-   "n_rows": 43188,
-   "n_sessions": 1,
+   "kind": "real_books",
+   "basket_id": "fed-oct-2026",
+   "title": "Fed Decision in October?",
+   "t_start": "2026-10-01T22:30:10",
+   "t_end": "2026-10-02T06:55:46",
+   "hours": 6.440325246666667,
+   "n_rows": 3130,
+   "n_sessions": 6,
    "sources": [
     {
-     "manifest": "/home/user/bayes_project/data/prices_history/balance-of-power-2026/manifest.json",
-     "fetched_at": "2026-10-02T03:00:08.677062+00:00"
+     "group": "main",
+     "manifest": "/home/user/bayes_project/data/historical_books/main/manifest.json"
     }
    ],
    "seed": null,
    "notes": [
-    "Execution books are MODELLED: per-leg spread democrats-sweep=1 tick(s), d-senate-r-house=1 tick(s), r-senate-d-house=1 tick(s), republicans-sweep=1 tick(s), other=1 tick(s) (default 1 tick)."
+    "Only 6.4 h of live books so far (recording continues in \u22642 h chunks); treat backtest statistics on this sample as anecdotal."
    ],
    "synthetic": false,
-   "code_version": "6a2cb74"
-  },
-  {
-   "kind": "real_prices",
-   "basket_id": "house-2026",
-   "title": "Which party will win the House in 2026?",
-   "t_start": "2026-09-02T03:01:00",
-   "t_end": "2026-10-02T02:59:00",
-   "hours": 719.9666666666667,
-   "n_rows": 43190,
-   "n_sessions": 1,
-   "sources": [
-    {
-     "manifest": "/home/user/bayes_project/data/prices_history/house-2026/manifest.json",
-     "fetched_at": "2026-10-02T03:00:22.217855+00:00"
-    }
-   ],
-   "seed": null,
-   "notes": [
-    "Execution books are MODELLED: per-leg spread democratic-party=1 tick(s), republican-party=1 tick(s) (default 1 tick)."
-   ],
-   "synthetic": false,
-   "code_version": "6a2cb74"
-  },
-  {
-   "kind": "real_prices",
-   "basket_id": "senate-2026",
-   "title": "Which party will win the Senate in 2026?",
-   "t_start": "2026-09-02T03:02:00",
-   "t_end": "2026-10-02T03:00:00",
-   "hours": 719.9666666666667,
-   "n_rows": 43190,
-   "n_sessions": 1,
-   "sources": [
-    {
-     "manifest": "/home/user/bayes_project/data/prices_history/senate-2026/manifest.json",
-     "fetched_at": "2026-10-02T03:00:37.011971+00:00"
-    }
-   ],
-   "seed": null,
-   "notes": [
-    "Execution books are MODELLED: per-leg spread democratic-party=1 tick(s), republican-party=1 tick(s) (default 1 tick)."
-   ],
-   "synthetic": false,
-   "code_version": "6a2cb74"
+   "code_version": "ee41431"
   }
  ],
  "synthetic": false,
- "code_version": "6a2cb74",
- "selected": {
-  "basket": "fed-oct-2026",
-  "window": 87,
-  "z_entry": 1.5,
-  "z_exit": 0.5,
-  "selection": "plateau centre of the frictionless validation score",
-  "n_configs": 72,
-  "h_train_min": 172.83365631545513,
-  "push_rate_per_min": 0.05016786940917686,
-  "spread_sum": 0.02299999999999991,
-  "fee_per_unit": 0.02616312536703994,
-  "train": [
-   "2026-09-02 03:01:00+00:00",
-   "2026-09-20 03:03:00+00:00"
-  ],
-  "validation": [
-   "2026-09-20 09:04:00+00:00",
-   "2026-09-26 03:01:00+00:00"
-  ],
-  "test": [
-   "2026-09-26 09:02:00+00:00",
-   "2026-10-02 02:59:00+00:00"
-  ],
-  "test_start_ns": 1790413320000000000
- },
- "johansen_angle_deg": 5.836662662215328,
- "pairings": [
-  {
-   "pairing": "House D  vs  Dem Sweep + (R Sen, D House)",
-   "mean residual": 0.00975467154467787,
-   "HAC t": 4.870353379731451,
-   "p": 1.1139883785751504e-06,
-   "half-life (h)": 13.618291870171944,
-   "EG p (y~x)": 0.04329090983650413,
-   "EG p (x~y)": 0.03747296539381884,
-   "EG p (Holm, 4 tests)": 0.07494593078763769
-  },
-  {
-   "pairing": "Senate D vs  Dem Sweep + (D Sen, R House)",
-   "mean residual": -0.002393393845370097,
-   "HAC t": -1.6435707317264854,
-   "p": 0.10026490376683876,
-   "half-life (h)": 11.917183602714935,
-   "EG p (y~x)": 0.0005474033915213553,
-   "EG p (x~y)": 0.0006783309325847895,
-   "EG p (Holm, 4 tests)": 0.002189613566085421
-  }
- ]
+ "code_version": "ee41431"
 }

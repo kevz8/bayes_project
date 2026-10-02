@@ -1,7 +1,7 @@
 """Build, execute and stamp the research notebooks (reproducibly, from code).
 
-    python scripts/build_notebooks.py                 # all three, data mode auto (real data preferred)
-    python scripts/build_notebooks.py --only 03       # one notebook
+    python scripts/build_notebooks.py                 # both notebooks, data mode auto (real data preferred)
+    python scripts/build_notebooks.py --only 02       # one notebook
     python scripts/build_notebooks.py --update-readme # also refresh the README results block
 
 Each notebook's cells live in ``scripts/notebooks/nbXX.py`` as ``CELLS = [("md"|"code", source), ...]``.
@@ -31,8 +31,7 @@ NB_DIR = ROOT / "notebooks"
 SPEC_DIR = Path(__file__).resolve().parent / "notebooks"
 NOTEBOOKS = {
     "01": "01_sum_to_one_eda.ipynb",
-    "02": "02_cross_market_ols.ipynb",
-    "03": "03_view_results.ipynb",
+    "02": "02_view_results.ipynb",
 }
 BANNER_RE = re.compile(r"DATA: REAL|SYNTHETIC DATA")
 
@@ -85,7 +84,7 @@ def update_readme(readme: Path = ROOT / "README.md") -> None:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--only", default="01,02,03")
+    ap.add_argument("--only", default="01,02")
     ap.add_argument("--data-mode", default=None, help="sets BAYES_DATA_MODE for the kernels")
     ap.add_argument("--no-execute", action="store_true")
     ap.add_argument("--update-readme", action="store_true")
