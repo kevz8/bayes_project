@@ -54,5 +54,5 @@
    "sha256": "20f201817c17a5be672e33fd5a2b00db14f044c078537b73919b82c88b11cad3"
   }
  },
- "semantics_note": "p is Polymarket's price-history value (a midpoint / last-trade style display price; the exact definition is UNVERIFIED). It is NOT executable: no bid, ask or depth."
+ "semantics_note": "p is the leg's order-book midpoint, sampled per leg on the requested grid (verified against recorded live books for fed-oct-2026 on 2026-10-02: every sampled value equalled (best bid + best ask)/2). Legs are sampled independently, so asynchronous updates can create transient spikes in the basket sum. NOT executable: no bid, ask or depth."
 }

@@ -56,8 +56,9 @@ logger = logging.getLogger(__name__)
 
 MANIFEST = "manifest.json"
 CHUNK_DAYS = 14
-PRICES_SEMANTICS = ("p is Polymarket's price-history value (a midpoint / last-trade style display price; "
-                    "the exact definition is UNVERIFIED). It is NOT executable: no bid, ask or depth.")
+PRICES_SEMANTICS = (
+    "p is the leg's order-book midpoint, sampled per leg on the requested grid (verified against recorded live books for fed-oct-2026 on 2026-10-02: every sampled value equalled (best bid + best ask)/2). Legs are sampled independently, so asynchronous updates can create transient spikes in the basket sum. NOT executable: no bid, ask or depth."
+)
 
 
 # --------------------------------------------------------------------------- helpers

@@ -344,3 +344,17 @@ def save(fig: Figure, name: str, root: Path = FIGURES_ROOT, dpi: int = 150) -> P
     fig.savefig(path, dpi=dpi, bbox_inches="tight", facecolor=SURFACE)
     plt.close(fig)
     return path
+
+
+def show(fig: Figure, name: str | None = None, root: Path = FIGURES_ROOT) -> Path | None:
+    """Notebook helper: render the figure inline, then save it (if ``name``) and close it."""
+    try:
+        from IPython.display import display
+
+        display(fig)
+    except ImportError:  # pragma: no cover - outside IPython
+        pass
+    if name:
+        return save(fig, name, root=root)
+    plt.close(fig)
+    return None
