@@ -1,0 +1,90 @@
+{
+ "basket_id": "mlb-ws-2026",
+ "synthetic": false,
+ "fetched_at": "2026-10-02T03:01:14.139260+00:00",
+ "endpoint": "GET https://clob.polymarket.com/prices-history",
+ "params": {
+  "start_ts": 1769014776,
+  "end_ts": 1790910037,
+  "recent_start_ts": 1788318037,
+  "recent_fidelity_min": 1,
+  "full_history": true,
+  "full_fidelity_min": 60,
+  "chunk_days": 14
+ },
+ "legs": {
+  "new-york-yankees": {
+   "yes_token_id": "52854035362787091895017612076763457120573181014952605669517525908999466984865",
+   "label": "New York Yankees",
+   "rows": 48040,
+   "first_t": 1769029239,
+   "last_t": 1790910025,
+   "sha256": "2e510a96badb4b048cb8a7701d01873d53f2909965403f3a1b69f1e31a0071b7"
+  },
+  "tampa-bay-rays": {
+   "yes_token_id": "47619537154464827225570738666275423513741144464229940374555699932743034295206",
+   "label": "Tampa Bay Rays",
+   "rows": 48134,
+   "first_t": 1769029249,
+   "last_t": 1790910019,
+   "sha256": "533372114d5e61f8877936de692532730413a56118cb13cf81f255f69cab2750"
+  },
+  "cleveland-guardians": {
+   "yes_token_id": "86836855507912353672331273895741550012643122260675758564432763672972116051156",
+   "label": "Cleveland Guardians",
+   "rows": 48078,
+   "first_t": 1769029248,
+   "last_t": 1790910020,
+   "sha256": "6bca50a79552b6a9544901023e9fabc4185cc306023008a57ae56b1da82a0e61"
+  },
+  "chicago-white-sox": {
+   "yes_token_id": "47345805017667669897137395690450353435714129302571040588246790838753631749361",
+   "label": "Chicago White Sox",
+   "rows": 48450,
+   "first_t": 1769029257,
+   "last_t": 1790910016,
+   "sha256": "11808c0939fa5351b3a057221cbe52e2299f2be1d584429c7ac6c32b8fbc3e26"
+  },
+  "atlanta-braves": {
+   "yes_token_id": "87400549613971964996449731299293585289302880817247437384669548139968257881468",
+   "label": "Atlanta Braves",
+   "rows": 48030,
+   "first_t": 1769032824,
+   "last_t": 1790910024,
+   "sha256": "38d8c8a16203040e5ed409076d8e8a0b364ecb521656fe94360d4828d7327473"
+  },
+  "philadelphia-phillies": {
+   "yes_token_id": "56772567436880230751429990016212879028273056769219355099340259163330517784781",
+   "label": "Philadelphia Phillies",
+   "rows": 48348,
+   "first_t": 1769029249,
+   "last_t": 1790910022,
+   "sha256": "d704e2d938af03abf688b7ad35de7f043fc55fc15f090bbb2af24f708c141157"
+  },
+  "milwaukee-brewers": {
+   "yes_token_id": "68495273029336552259622116656826978391613637593537133254546205487243272235948",
+   "label": "Milwaukee Brewers",
+   "rows": 48269,
+   "first_t": 1769032821,
+   "last_t": 1790910022,
+   "sha256": "f8dae5b3e1b81b95db979f12d903138b683ef5cb3fabe18c01ec450c811ff43c"
+  },
+  "los-angeles-dodgers": {
+   "yes_token_id": "1204155327844132216976037605131756626466220080116229118353112706411786559118",
+   "label": "Los Angeles Dodgers",
+   "rows": 48346,
+   "first_t": 1769029249,
+   "last_t": 1790910022,
+   "sha256": "7c2fe748720539bbff3f0e159f4b68a3c04d6f7a41150c2fd3900c659a802728"
+  },
+  "san-diego-padres": {
+   "yes_token_id": "31221080242705278649725019814790252911735511309312424063267127209870268745118",
+   "label": "San Diego Padres",
+   "rows": 48369,
+   "first_t": 1769029243,
+   "last_t": 1790910022,
+   "sha256": "f6b21d136138b85c610c3850b6485480038976bd188078b122cff5e91a1e7acb"
+  }
+ },
+ "semantics_note": "p is Polymarket's price-history value (a midpoint / last-trade style display price; the exact definition is UNVERIFIED). It is NOT executable: no bid, ask or depth."
+}

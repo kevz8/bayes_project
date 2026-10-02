@@ -1,0 +1,34 @@
+{
+ "basket_id": "house-2026",
+ "synthetic": false,
+ "fetched_at": "2026-10-02T03:00:22.217855+00:00",
+ "endpoint": "GET https://clob.polymarket.com/prices-history",
+ "params": {
+  "start_ts": 1752262177,
+  "end_ts": 1790910008,
+  "recent_start_ts": 1788318008,
+  "recent_fidelity_min": 1,
+  "full_history": true,
+  "full_fidelity_min": 60,
+  "chunk_days": 14
+ },
+ "legs": {
+  "democratic-party": {
+   "yes_token_id": "83247781037352156539108067944461291821683755894607244160607042790356561625563",
+   "label": "Democratic Party",
+   "rows": 52802,
+   "first_t": 1752267608,
+   "last_t": 1790909956,
+   "sha256": "94ace67871347dca74f7d0cf660ee8d17110fe1f84c5a5aea762c218b1d8e37c"
+  },
+  "republican-party": {
+   "yes_token_id": "65139230827417363158752884968303867495725894165574887635816574090175320800482",
+   "label": "Republican Party",
+   "rows": 52623,
+   "first_t": 1752267608,
+   "last_t": 1790909960,
+   "sha256": "b67050491e4fcf2398ad68c1055b467e2524ae0a155928c29b519b0931182a13"
+  }
+ },
+ "semantics_note": "p is Polymarket's price-history value (a midpoint / last-trade style display price; the exact definition is UNVERIFIED). It is NOT executable: no bid, ask or depth."
+}

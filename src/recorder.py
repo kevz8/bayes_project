@@ -87,6 +87,7 @@ def _atomic_write_json(path: Path, obj: Any) -> None:
     fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
     with os.fdopen(fd, "w", encoding="utf-8") as fh:
         json.dump(obj, fh, indent=1)
+    os.chmod(tmp, 0o644)
     os.replace(tmp, path)
 
 
@@ -436,6 +437,7 @@ def write_tob_csv(rows: Iterable[tuple], path: Path) -> int:
             w.writerow([r[0], r[1], *("" if isinstance(x, float) and math.isnan(x) else repr(float(x)) for x in r[2:6]),
                         int(bool(r[6]))])
             n += 1
+    os.chmod(tmp, 0o644)
     os.replace(tmp, path)
     return n
 
@@ -545,6 +547,7 @@ def backfill(basket_id: str, *, end_ts: int | None = None, recent_days: float = 
             w.writerow(["t", "p", "fidelity_s"])
             for t in sorted(rows):
                 w.writerow([t, repr(rows[t][0]), rows[t][1]])
+        os.chmod(tmp, 0o644)
         os.replace(tmp, path)
         ts_sorted = sorted(rows)
         legs_meta[leg.leg_id] = {"yes_token_id": leg.yes_token_id, "label": leg.label, "rows": len(rows),

@@ -1,0 +1,58 @@
+{
+ "basket_id": "fed-oct-2026",
+ "synthetic": false,
+ "fetched_at": "2026-10-02T02:59:37.379220+00:00",
+ "endpoint": "GET https://clob.polymarket.com/prices-history",
+ "params": {
+  "start_ts": 1781737557,
+  "end_ts": 1790909966,
+  "recent_start_ts": 1788317966,
+  "recent_fidelity_min": 1,
+  "full_history": true,
+  "full_fidelity_min": 60,
+  "chunk_days": 14
+ },
+ "legs": {
+  "50-bps-decrease": {
+   "yes_token_id": "17010377994663817312158123655937348199252960045746746128731746451645055725586",
+   "label": "50+ bps decrease",
+   "rows": 44979,
+   "first_t": 1781744406,
+   "last_t": 1790909959,
+   "sha256": "2bb04e6a9a6b693afb2ffb9dcfad110f5f8756a1c486125bfd2d318a418772ba"
+  },
+  "25-bps-decrease": {
+   "yes_token_id": "33268510350568915228897273528353467773422190590579607471427765079749830445947",
+   "label": "25 bps decrease",
+   "rows": 44996,
+   "first_t": 1781744405,
+   "last_t": 1790909956,
+   "sha256": "36e42715d4411790c7b10184468571a66b6a525a20fa2026f42f9399cca8c020"
+  },
+  "no-change": {
+   "yes_token_id": "111061902544814266207267295505639408607400625795891618462682726460921782993748",
+   "label": "No change",
+   "rows": 44996,
+   "first_t": 1781744405,
+   "last_t": 1790909956,
+   "sha256": "f8dda239ace1de624fe21db324bcae25d2ef4364d78eed5f9954ed9a80d44905"
+  },
+  "25-bps-increase": {
+   "yes_token_id": "55159722761418013044126414276680602270318000841690689684819994448621694923050",
+   "label": "25 bps increase",
+   "rows": 44993,
+   "first_t": 1781740816,
+   "last_t": 1790909955,
+   "sha256": "ef7a5158ff495b91a4effa7fb765ab860ee5501d179786f2b56d2fca0a5602a3"
+  },
+  "50-bps-increase": {
+   "yes_token_id": "18246296022868501258060085368606280205967114341141276439803424448463050819498",
+   "label": "50+ bps increase",
+   "rows": 44977,
+   "first_t": 1781740824,
+   "last_t": 1790909959,
+   "sha256": "12a21f86e0b368ec96791b014ffc37e728e92451793d3b182bc50a5015d7df08"
+  }
+ },
+ "semantics_note": "p is Polymarket's price-history value (a midpoint / last-trade style display price; the exact definition is UNVERIFIED). It is NOT executable: no bid, ask or depth."
+}

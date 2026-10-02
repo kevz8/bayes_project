@@ -1,0 +1,58 @@
+{
+ "basket_id": "balance-of-power-2026",
+ "synthetic": false,
+ "fetched_at": "2026-10-02T03:00:08.677062+00:00",
+ "endpoint": "GET https://clob.polymarket.com/prices-history",
+ "params": {
+  "start_ts": 1752266873,
+  "end_ts": 1790909977,
+  "recent_start_ts": 1788317977,
+  "recent_fidelity_min": 1,
+  "full_history": true,
+  "full_fidelity_min": 60,
+  "chunk_days": 14
+ },
+ "legs": {
+  "democrats-sweep": {
+   "yes_token_id": "34722410608062854697106861099776685947172185964394483545370684749662285977831",
+   "label": "Democrats Sweep",
+   "rows": 52515,
+   "first_t": 1752271208,
+   "last_t": 1790909958,
+   "sha256": "bf4d87b0fa78f495f797ead633999b794bd14a37ad38c801b2875e15f796f5a9"
+  },
+  "d-senate-r-house": {
+   "yes_token_id": "70997927349469817841862065582625658840347600365813612622959588796331622340305",
+   "label": "D Senate, R House",
+   "rows": 52876,
+   "first_t": 1752271208,
+   "last_t": 1790909956,
+   "sha256": "13174521f6e2563eabaaa205c4fe06118a4a9f1c6dc453004b7ced8093c3c121"
+  },
+  "r-senate-d-house": {
+   "yes_token_id": "6302359956133594764084277082169634158291609371270652093164054687145970756151",
+   "label": "R Senate, D House",
+   "rows": 52569,
+   "first_t": 1752271208,
+   "last_t": 1790909961,
+   "sha256": "6d53e46ea26371fedb5df549c4af93b8f3dd2d657f396c7f5b465d7af39b8125"
+  },
+  "republicans-sweep": {
+   "yes_token_id": "103704141773947678931823410030956181918562062788486034785782641603149828893320",
+   "label": "Republicans Sweep",
+   "rows": 52954,
+   "first_t": 1752271208,
+   "last_t": 1790909955,
+   "sha256": "bd82dd0f6e1eebd7e6bf63ad7422d0bf44a56aeaf125a59da5276951ee7b4dfe"
+  },
+  "other": {
+   "yes_token_id": "35477631289241705233759154026285946627439635224019448868888132647783862821489",
+   "label": "Other",
+   "rows": 52621,
+   "first_t": 1752271208,
+   "last_t": 1790909960,
+   "sha256": "20f201817c17a5be672e33fd5a2b00db14f044c078537b73919b82c88b11cad3"
+  }
+ },
+ "semantics_note": "p is Polymarket's price-history value (a midpoint / last-trade style display price; the exact definition is UNVERIFIED). It is NOT executable: no bid, ask or depth."
+}
