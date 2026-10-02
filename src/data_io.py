@@ -107,6 +107,9 @@ class Dataset:
     basket: Basket
     _frames: Callable[[], Iterator[tuple[int, list[Event]]]]
     _tob: Callable[[], pd.DataFrame]
+    # Frames are emitted only when a price changes (price-history data), so silence is not a
+    # recording gap: the pipeline must not reset its z engine on quiet periods.
+    change_only_frames: bool = False
 
     def frames(self) -> Iterator[tuple[int, list[Event]]]:
         """Re-iterable ``(t_recv_ns, events)`` stream for the backtest pipeline."""
@@ -186,7 +189,7 @@ def prices_grid(basket_id: str, *, fidelity_s: int = 60, root: Path = PRICES_ROO
     if df.empty:
         raise DataUnavailable(f"{basket_id}: no {fidelity_s}s price history")
     wide = df.pivot_table(index="t", columns="leg", values="p", aggfunc="last").sort_index()
-    wide.index = pd.to_datetime(wide.index, unit="s", utc=True)
+    wide.index = pd.to_datetime(wide.index, unit="s", utc=True).as_unit("ns")
     grid = pd.date_range(wide.index[0].ceil(f"{fidelity_s}s"), wide.index[-1].floor(f"{fidelity_s}s"),
                          freq=f"{fidelity_s}s")
     limit = max(int(pd.Timedelta(max_gap).total_seconds() // fidelity_s), 1)
@@ -257,7 +260,7 @@ def load_real_prices(basket_id: str, *, fidelity_s: int = 60, root: Path = PRICE
                       + ", ".join(f"{k}={v[0]} tick(s)" for k, v in calib.items())
                       + (" (medians of the recorded live books)." if tob_rec is not None else " (default 1 tick)."))
     leg_by_id = {l.leg_id: l for l in basket.legs}
-    t_ns = wide.index.asi8
+    t_ns = wide.index.as_unit("ns").asi8
     values = wide.to_numpy(float)
     cols = list(wide.columns)
 
@@ -290,7 +293,7 @@ def load_real_prices(basket_id: str, *, fidelity_s: int = 60, root: Path = PRICE
                              asks[0][0] / 1e6 if asks else math.nan, sz, sz, True))
         return pd.DataFrame(rows, columns=["t_ns", "leg", "bid", "ask", "bid_sz", "ask_sz", "clean"])
 
-    return Dataset(info, basket, frames, tob)
+    return Dataset(info, basket, frames, tob, change_only_frames=True)
 
 
 # --------------------------------------------------------------------------- synthetic

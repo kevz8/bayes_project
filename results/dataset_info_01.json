@@ -28,7 +28,7 @@
     "Execution books are MODELLED: per-leg spread 50-bps-decrease=1 tick(s), 25-bps-decrease=1 tick(s), no-change=1 tick(s), 25-bps-increase=1 tick(s), 50-bps-increase=1 tick(s) (default 1 tick)."
    ],
    "synthetic": false,
-   "code_version": "7d88807"
+   "code_version": "6a2cb74"
   },
   {
    "kind": "real_books",
@@ -37,7 +37,7 @@
    "t_start": "2026-10-01T22:30:10",
    "t_end": "2026-10-02T02:59:25",
    "hours": 2.506723096111111,
-   "n_rows": 867,
+   "n_rows": 914,
    "n_sessions": 4,
    "sources": [
     {
@@ -50,11 +50,11 @@
     "Only 2.5 h of live books so far (recording continues in \u22642 h chunks); treat backtest statistics on this sample as anecdotal."
    ],
    "synthetic": false,
-   "code_version": "7d88807"
+   "code_version": "6a2cb74"
   }
  ],
  "synthetic": false,
- "code_version": "7d88807",
+ "code_version": "6a2cb74",
  "basket_stats": [
   {
    "basket": "fed-oct-2026",

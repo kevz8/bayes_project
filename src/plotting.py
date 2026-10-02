@@ -126,9 +126,9 @@ def plot_basket_signal_equity(series: pd.DataFrame, trades: pd.DataFrame, equity
                         label="executable band [ΣBid, ΣAsk]", step="post")
     if {"mu", "sigma"} <= set(s.columns):
         lo, hi = s["mu"] - z_entry * s["sigma"], s["mu"] + z_entry * s["sigma"]
-        ax.fill_between(s.index, lo, hi, color=BAND, alpha=0.6, linewidth=0, label=f"μ ± {z_entry:g}σ")
-        ax.plot(s.index, s["mu"], color=INK_2, linewidth=1.1, linestyle="--", label="rolling mean μ")
-    ax.plot(s.index, s["s_mid"], color=SERIES[0], linewidth=1.3, label="basket sum ΣMid")
+        ax.fill_between(s.index, lo, hi, color=BAND, alpha=0.6, linewidth=0, label=f"μ ± {z_entry:g}σ", step="post")
+        ax.plot(s.index, s["mu"], color=INK_2, linewidth=1.1, linestyle="--", label="rolling mean μ", drawstyle="steps-post")
+    ax.plot(s.index, s["s_mid"], color=SERIES[0], linewidth=1.3, label="basket sum ΣMid", drawstyle="steps-post")
     ax.axhline(1.0, color=MUTED, linewidth=0.9, zorder=1)
     ax.annotate("1.00", xy=(1.0, 1.0), xycoords=("axes fraction", "data"), xytext=(3, 0),
                 textcoords="offset points", va="center", color=MUTED, fontsize=8)
@@ -157,15 +157,19 @@ def plot_basket_signal_equity(series: pd.DataFrame, trades: pd.DataFrame, equity
     _legend(ax, loc="upper left", ncol=3)
 
     eq = equity["equity_liq"]
-    ax2.plot(eq.index, eq, color=SERIES[0], linewidth=1.5, label="equity (liquidation marks)")
+    ax2.plot(eq.index, eq, color=SERIES[0], linewidth=1.5, label="equity (liquidation marks)", drawstyle="steps-post")
     if "equity_mid" in equity:
         ax2.plot(equity.index, equity["equity_mid"], color=INK_2, linewidth=1.1, linestyle="--",
-                 label="equity (mid marks)")
+                 label="equity (mid marks)", drawstyle="steps-post")
     peak = eq.cummax()
-    ax2.fill_between(eq.index, eq, peak, where=eq < peak, color=CRITICAL, alpha=0.12, linewidth=0, label="drawdown")
+    ax2.fill_between(eq.index, eq, peak, where=eq < peak, color=CRITICAL, alpha=0.12, linewidth=0, label="drawdown",
+                     step="post")
     ax2.set_ylabel("Account equity (USD)")
     ax2.set_title("Simulated account")
-    _legend(ax2, loc="upper left", ncol=3)
+    lo2, hi2 = float(np.nanmin(eq)), float(np.nanmax(peak))
+    pad = max(hi2 - lo2, 1.0) * 0.45
+    ax2.set_ylim(lo2 - pad, hi2 + pad * 0.25)  # headroom below for the legend, so it never covers the curve
+    _legend(ax2, loc="lower left", ncol=3)
     return _finish(fig, data_kind, title)
 
 
@@ -298,19 +302,28 @@ def plot_grid_heatmap(grid: pd.DataFrame, *, x: str, y: str, value: str, data_ki
 
 def plot_attribution(attribution: Mapping[str, float], *, data_kind: str, title: str) -> Figure:
     """Horizontal waterfall from gross mid-to-mid P&L through each friction to net P&L."""
-    items = [(k, float(v)) for k, v in attribution.items() if k != "net" and np.isfinite(v)]
-    net = float(attribution.get("net", sum(v for _, v in items)))
+    raw = [(k, float(v)) for k, v in attribution.items() if k != "net" and np.isfinite(v)]
+    net = float(attribution.get("net", sum(v for _, v in raw)))
+    scale = max([abs(v) for _, v in raw] + [abs(net), 1e-9])
+    items = [(k, v) for k, v in raw if abs(v) >= 1e-3 * scale]  # zero terms add only clutter
     fig, ax = _fig(figsize=(9, 0.45 * (len(items) + 1) + 1.6))
-    cum = 0.0
+    cum, ends = 0.0, []
     labels = []
     for i, (k, v) in enumerate(items):
         ax.barh(i, v, left=cum, color=GOOD if v >= 0 else CRITICAL, height=0.6, edgecolor=SURFACE, linewidth=1)
-        ax.text(cum + v, i, f" {v:+,.2f}", va="center", ha="left" if v >= 0 else "right", fontsize=8.5, color=INK_2)
+        ends.append((i, max(cum, cum + v), f"{v:+,.2f}"))
         cum += v
         labels.append(k.replace("_", " "))
     ax.barh(len(items), net, color=INK, height=0.6)
-    ax.text(net, len(items), f" {net:+,.2f}", va="center", ha="left" if net >= 0 else "right", fontsize=9, color=INK)
+    ends.append((len(items), max(0.0, net), f"{net:+,.2f}"))
     labels.append("net P&L")
+    lo_x = min(0.0, net, *(e - abs(v) for (_, e, _), (_, v) in zip(ends, items + [("", net)])))
+    hi_x = max(e for _, e, _ in ends)
+    span = hi_x - lo_x or 1.0
+    for i, x, txt in ends:  # value labels always to the right of the bar, never over the axis labels
+        ax.text(x + 0.015 * span, i, txt, va="center", ha="left", fontsize=8.5,
+                color=INK if i == len(items) else INK_2)
+    ax.set_xlim(lo_x - 0.03 * span, hi_x + 0.22 * span)
     ax.set_yticks(range(len(labels)), labels)
     ax.invert_yaxis()
     ax.axvline(0, color=AXIS, linewidth=0.8)

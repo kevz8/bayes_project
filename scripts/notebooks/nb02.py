@@ -16,6 +16,7 @@ Notebook 01 showed that the basket sum mean-reverts while its legs wander. Here 
 import sys, json, warnings
 sys.path.insert(0, "..")
 warnings.filterwarnings("ignore")
+import logging; logging.getLogger("src").setLevel(logging.ERROR)  # the live recorder may be mid-write
 import numpy as np, pandas as pd
 from IPython.display import Markdown, display
 from src import plotting as P, stats_tools as st, research as R, RESULTS_ROOT
@@ -113,7 +114,7 @@ S = fed.sum(axis=1)
 book = R.book_sums("fed-oct-2026", cfg)
 spread = float((book[0]["s_ask"] - book[0]["s_bid"]).median()) if book is not None else 0.005 * b_f.n_legs
 F = basket_fee_per_unit(b_f.fees, fed.mean().to_numpy())
-sums = pd.DataFrame({"t_ns": S.index.asi8, "s_mid": S.to_numpy(), "s_bid": S.to_numpy() - spread / 2,
+sums = pd.DataFrame({"t_ns": S.index.as_unit("ns").asi8, "s_mid": S.to_numpy(), "s_bid": S.to_numpy() - spread / 2,
                      "s_ask": S.to_numpy() + spread / 2, "valid": True}, index=S.index)
 embargo = 6 * 60   # 6 h ≈ 3 half-lives between splits
 tr, va, te = st.walk_forward_splits(len(sums), 0.6, 0.2, embargo=embargo)

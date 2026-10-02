@@ -30,7 +30,7 @@
     "Execution books are MODELLED: per-leg spread 50-bps-decrease=1 tick(s), 25-bps-decrease=1 tick(s), no-change=1 tick(s), 25-bps-increase=1 tick(s), 50-bps-increase=1 tick(s) (default 1 tick)."
    ],
    "synthetic": false,
-   "code_version": "5c2f3b5"
+   "code_version": "6a2cb74"
   },
   {
    "kind": "real_prices",
@@ -52,7 +52,7 @@
     "Execution books are MODELLED: per-leg spread democrats-sweep=1 tick(s), d-senate-r-house=1 tick(s), r-senate-d-house=1 tick(s), republicans-sweep=1 tick(s), other=1 tick(s) (default 1 tick)."
    ],
    "synthetic": false,
-   "code_version": "5c2f3b5"
+   "code_version": "6a2cb74"
   },
   {
    "kind": "real_prices",
@@ -74,7 +74,7 @@
     "Execution books are MODELLED: per-leg spread democratic-party=1 tick(s), republican-party=1 tick(s) (default 1 tick)."
    ],
    "synthetic": false,
-   "code_version": "5c2f3b5"
+   "code_version": "6a2cb74"
   },
   {
    "kind": "real_prices",
@@ -96,11 +96,11 @@
     "Execution books are MODELLED: per-leg spread democratic-party=1 tick(s), republican-party=1 tick(s) (default 1 tick)."
    ],
    "synthetic": false,
-   "code_version": "5c2f3b5"
+   "code_version": "6a2cb74"
   }
  ],
  "synthetic": false,
- "code_version": "5c2f3b5",
+ "code_version": "6a2cb74",
  "selected": {
   "basket": "fed-oct-2026",
   "window": 87,

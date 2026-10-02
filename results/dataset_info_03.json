@@ -1,0 +1,58 @@
+{
+ "notebook": "03",
+ "data_kinds": [
+  "real_books",
+  "real_prices"
+ ],
+ "baskets": [
+  "fed-oct-2026"
+ ],
+ "datasets": [
+  {
+   "kind": "real_prices",
+   "basket_id": "fed-oct-2026",
+   "title": "Fed Decision in October?",
+   "t_start": "2026-09-02T03:01:00",
+   "t_end": "2026-10-02T02:59:00",
+   "hours": 719.9666666666667,
+   "n_rows": 43189,
+   "n_sessions": 1,
+   "sources": [
+    {
+     "manifest": "/home/user/bayes_project/data/prices_history/fed-oct-2026/manifest.json",
+     "fetched_at": "2026-10-02T02:59:37.379220+00:00"
+    }
+   ],
+   "seed": null,
+   "notes": [
+    "Execution books are MODELLED: per-leg spread 50-bps-decrease=1 tick(s), 25-bps-decrease=1 tick(s), no-change=1 tick(s), 25-bps-increase=1 tick(s), 50-bps-increase=1 tick(s) (medians of the recorded live books)."
+   ],
+   "synthetic": false,
+   "code_version": "6a2cb74"
+  },
+  {
+   "kind": "real_books",
+   "basket_id": "fed-oct-2026",
+   "title": "Fed Decision in October?",
+   "t_start": "2026-10-01T22:30:10",
+   "t_end": "2026-10-02T02:59:25",
+   "hours": 2.506723096111111,
+   "n_rows": 922,
+   "n_sessions": 4,
+   "sources": [
+    {
+     "group": "main",
+     "manifest": "/home/user/bayes_project/data/historical_books/main/manifest.json"
+    }
+   ],
+   "seed": null,
+   "notes": [
+    "Only 2.5 h of live books so far (recording continues in \u22642 h chunks); treat backtest statistics on this sample as anecdotal."
+   ],
+   "synthetic": false,
+   "code_version": "6a2cb74"
+  }
+ ],
+ "synthetic": false,
+ "code_version": "6a2cb74"
+}

@@ -278,6 +278,8 @@ class StrategyRunner:
 
 
 def run_backtest(dataset: Dataset, cfg: RunConfig) -> BacktestResult:
+    if dataset.change_only_frames and math.isfinite(cfg.gap_reset_s):
+        cfg = replace(cfg, gap_reset_s=math.inf)  # quiet price history is not a recording gap
     runner = StrategyRunner(dataset.basket, cfg)
     for t, events in dataset.frames():
         runner.on_frame(t, events)
@@ -393,8 +395,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.cmd == "backtest":
         ds = load_dataset(args.basket, mode=args.data, cfg=cfgm)
         ex = ExecConfig.from_defaults(cfgm.defaults, gate=args.gate, exit_policy=args.exit_policy,
-                                      convert_enabled=args.convert,
-                                      require_newer_book=ds.info.kind.value != "real_books")
+                                      convert_enabled=args.convert)
         rc = RunConfig(strategy=args.strategy, z=ZConfig(window=args.window),
                        signal=SignalConfig(z_entry=args.z_entry, z_exit=args.z_exit), exec=ex)
         res = run_backtest(ds, rc)

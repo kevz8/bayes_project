@@ -22,6 +22,7 @@ The primary basket is the **Fed decision at the October 2026 FOMC** (5 outcomes)
 import sys, warnings
 sys.path.insert(0, "..")
 warnings.filterwarnings("ignore")
+import logging; logging.getLogger("src").setLevel(logging.ERROR)  # the live recorder may be mid-write
 import numpy as np, pandas as pd
 from IPython.display import Markdown, display
 from src import plotting as P, stats_tools as st, research as R

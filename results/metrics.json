@@ -1,0 +1,190 @@
+{
+ "basket": "fed-oct-2026",
+ "data_kind": "real_prices",
+ "test": [
+  "2026-09-26 09:02:00+00:00",
+  "2026-10-02 02:59:00+00:00"
+ ],
+ "params": {
+  "window": 87,
+  "z_entry": 1.5,
+  "z_exit": 0.5
+ },
+ "strategies": {
+  "A \u00b7 blueprint z": {
+   "strategy": "A \u00b7 blueprint z",
+   "trades": 18,
+   "net P&L ($)": -1187.8183108208364,
+   "return": -0.11878183108208307,
+   "Sharpe (rf=4.2%)": "-8.54",
+   "max drawdown": -0.12647739008208314,
+   "max DD duration (h)": 131.55,
+   "hit rate": 0.0,
+   "entered outside band": 0.9444444444444444,
+   "gross mid ($)": 523.7511500000008,
+   "spread ($)": -554.1113999999999,
+   "fees ($)": -1157.4580608208341
+  },
+  "B \u00b7 gated z (edge > 0)": {
+   "strategy": "B \u00b7 gated z (edge > 0)",
+   "trades": 0,
+   "net P&L ($)": 0.0,
+   "return": 0.0,
+   "Sharpe (rf=4.2%)": "n/a",
+   "max drawdown": 0.0,
+   "max DD duration (h)": 0.0,
+   "hit rate": null,
+   "entered outside band": null,
+   "gross mid ($)": 0.0,
+   "spread ($)": 0.0,
+   "fees ($)": -0.0
+  },
+  "C \u00b7 arbitrage only": {
+   "strategy": "C \u00b7 arbitrage only",
+   "trades": 0,
+   "net P&L ($)": 0.0,
+   "return": 0.0,
+   "Sharpe (rf=4.2%)": "n/a",
+   "max drawdown": 0.0,
+   "max DD duration (h)": 0.0,
+   "hit rate": null,
+   "entered outside band": null,
+   "gross mid ($)": 0.0,
+   "spread ($)": 0.0,
+   "fees ($)": -0.0
+  },
+  "A \u00b7 blueprint z, convert on": {
+   "strategy": "A \u00b7 blueprint z, convert on",
+   "trades": 18,
+   "net P&L ($)": -1071.4055785852001,
+   "return": -0.10714055785851995,
+   "Sharpe (rf=4.2%)": "-8.37",
+   "max drawdown": -0.1149378008585199,
+   "max DD duration (h)": 131.55,
+   "hit rate": 0.0,
+   "entered outside band": 0.9444444444444444,
+   "gross mid ($)": 528.0894999999996,
+   "spread ($)": -519.8451949999989,
+   "fees ($)": -1086.1158685851988
+  },
+  "B \u00b7 gated z, convert on": {
+   "strategy": "B \u00b7 gated z, convert on",
+   "trades": 0,
+   "net P&L ($)": 0.0,
+   "return": 0.0,
+   "Sharpe (rf=4.2%)": "n/a",
+   "max drawdown": 0.0,
+   "max DD duration (h)": 0.0,
+   "hit rate": null,
+   "entered outside band": null,
+   "gross mid ($)": 0.0,
+   "spread ($)": 0.0,
+   "fees ($)": -0.0
+  }
+ },
+ "headline": {
+  "start": "2026-09-02T03:01:00+00:00",
+  "end": "2026-10-02T00:28:00+00:00",
+  "span_days": 29.89375,
+  "n_marks": 1817,
+  "sharpe_freq": "1h",
+  "periods_per_year": 8760.0,
+  "n_periods": 717,
+  "too_short": false,
+  "rf_annual": 0.042,
+  "sharpe": -8.536271640633093,
+  "sharpe_rf0": -8.312397900889454,
+  "sharpe_lo_adjusted": -7.109404557440747,
+  "sharpe_display": "-8.54",
+  "sharpe_se": 1.7258480750969538,
+  "sharpe_ci95_lo": -13.277793224731218,
+  "sharpe_ci95_hi": -4.348143738799433,
+  "sortino": -8.597371205410436,
+  "bootstrap_mean_block": 120.0,
+  "bootstrap_n": 2000,
+  "total_return": -0.11878183108208307,
+  "max_dd": -0.12647739008208314,
+  "max_dd_ci95_lo": -0.2699352431164735,
+  "max_dd_ci95_hi": 0.0,
+  "max_dd_peak": "2026-09-26T12:55:00+00:00",
+  "max_dd_trough": "2026-10-01T17:23:00+00:00",
+  "max_dd_recovery": null,
+  "max_dd_duration_s": 473580.0,
+  "max_dd_censored": true,
+  "peak_to_trough_s": 448080.0,
+  "longest_dd_duration_s": 473580.0,
+  "longest_dd_censored": true,
+  "cagr": -0.7864626867313013,
+  "calmar": -6.218207746229513,
+  "short_sample": true,
+  "exposure": null,
+  "turnover": 83.49263624655933,
+  "n_frames": 1818,
+  "engine_resets": 1,
+  "data_kind": "real_prices",
+  "final_equity": 8812.18168917917,
+  "n_failed_entries": 0
+ },
+ "attribution_A": {
+  "gross_mid": 523.7511500000008,
+  "latency_drift": 0.0,
+  "half_spread": -554.1113999999998,
+  "depth_slippage": -8.505504460465382e-14,
+  "payoff_adjustment": 0.0,
+  "fees": 1157.4580608208341,
+  "gas": 0.0,
+  "legging_cost": 2.1334560646079743e-12,
+  "net": -1187.8183108208364
+ },
+ "sensitivity": {
+  "as tested (fee 0.05, 0.5 s + jitter)": {
+   "trades": 18.0,
+   "net P&L ($)": -1187.8183108208364,
+   "gross mid ($)": 523.7511500000008,
+   "fees ($)": -1157.4580608208341,
+   "spread+slippage ($)": -554.1113999999999
+  },
+  "no taker fee (maker-like)": {
+   "trades": 18.0,
+   "net P&L ($)": -27.706920000001233,
+   "gross mid ($)": 559.2862000000001,
+   "fees ($)": -0.0,
+   "spread+slippage ($)": -586.9931199999999
+  },
+  "zero latency": {
+   "trades": 18.0,
+   "net P&L ($)": -1187.8183108208357,
+   "gross mid ($)": 523.7511500000005,
+   "fees ($)": -1157.4580608208341,
+   "spread+slippage ($)": -554.1113999999999
+  },
+  "5 s latency": {
+   "trades": 18.0,
+   "net P&L ($)": -1187.8183108208364,
+   "gross mid ($)": 523.7511500000008,
+   "fees ($)": -1157.4580608208341,
+   "spread+slippage ($)": -554.1113999999999
+  },
+  "pessimistic: fill only on the next price update": {
+   "trades": 15.0,
+   "net P&L ($)": -1334.5503609354307,
+   "gross mid ($)": 494.6309501711618,
+   "fees ($)": -1078.4933809978902,
+   "spread+slippage ($)": -516.2619582546677
+  },
+  "slippage guard 0 ticks": {
+   "trades": 18.0,
+   "net P&L ($)": -1187.8183108208364,
+   "gross mid ($)": 523.7511500000008,
+   "fees ($)": -1157.4580608208341,
+   "spread+slippage ($)": -554.1113999999999
+  }
+ },
+ "live_books": {
+  "hours": 2.506723096111111,
+  "arb trades": 0,
+  "min S_ask": 1.013,
+  "max S_bid": 0.99,
+  "median n-leg spread": 0.02299999999999991
+ }
+}
