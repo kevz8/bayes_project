@@ -24,9 +24,9 @@ Reliability rules:
 * The reader yields to the event loop every 50 frames or 5 ms, so a flood of buffered
   frames cannot starve the heartbeat or the consumers.
 
-This container's egress proxy does not support WebSocket upgrades, so real data is
-recorded here with ``RestPollingFeed`` (``POST /books`` about once a second).
-``MarketDataFeed`` is the low-latency path for users' own machines.
+``MarketDataFeed`` (WebSocket) is the primary live source and is what the recorder uses.
+``RestPollingFeed`` (``POST /books`` about once a second) is the fallback for networks
+that block WebSocket upgrades; it cannot see sub-second dynamics.
 
 Hot-path module: no pandas import.
 """
