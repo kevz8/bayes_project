@@ -914,7 +914,7 @@
   {
    "session_id": "20261002T164636Z-0359",
    "started": "2026-10-02T16:46:36.136313+00:00",
-   "ended": null,
+   "ended": "2026-10-02T18:44:36.467011+00:00",
    "mode": "ws",
    "url": "wss://ws-subscriptions-clob.polymarket.com/ws/market",
    "assets": [
@@ -977,7 +977,7 @@
      "31221080242705278649725019814790252911735511309312424063267127209870268745118"
     ]
    },
-   "n_frames": 65546,
+   "n_frames": 80283,
    "n_dropped": 0,
    "reconnects": 2,
    "files": [
@@ -985,19 +985,19 @@
      "path": "raw/2026-10-02/16-20261002T164636Z-0359.jsonl.gz",
      "bytes": 679922,
      "lines": 5379,
-     "sha256": null
+     "sha256": "08c6ea6da2979cedea2df2e6013f7b76f0b6d53614664506d080c924357d8dcb"
     },
     {
      "path": "raw/2026-10-02/17-20261002T164636Z-0359.jsonl.gz",
      "bytes": 4332440,
      "lines": 39256,
-     "sha256": null
+     "sha256": "3ef82a9720f6f7c9582c27f7912b3971b7407055d270f086dfe17cba8b2fd344"
     },
     {
      "path": "raw/2026-10-02/18-20261002T164636Z-0359.jsonl.gz",
-     "bytes": 1986878,
-     "lines": 20994,
-     "sha256": null
+     "bytes": 3484121,
+     "lines": 35733,
+     "sha256": "dbd720c5ecf6f5e68eb6be305a7dccdbc193f5f2e30cbf42f4a186f376dd6d3c"
     }
    ],
    "code_version": "1b95f69",
