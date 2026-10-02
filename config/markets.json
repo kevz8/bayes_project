@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-01T00:00:00Z",
+  "updated_at": "2026-10-02T02:57:36Z",
   "defaults": {
     "fee_category_rates": {
       "crypto": 0.07,
@@ -54,7 +54,7 @@
       "basket_id": "fed-oct-2026",
       "title": "Fed Decision in October?",
       "event_slug": "fed-decision-in-october-20260617190323537",
-      "event_id": null,
+      "event_id": "606422",
       "slug_template": null,
       "category": null,
       "roles": [
@@ -62,126 +62,1207 @@
         "eda",
         "backtest"
       ],
-      "status": "unresolved",
-      "neg_risk": null,
-      "neg_risk_augmented": null,
-      "neg_risk_market_id": null,
+      "status": "active",
+      "neg_risk": true,
+      "neg_risk_augmented": false,
+      "neg_risk_market_id": "0x09ac0b2770dbcad3f2e4f5356a68af57cb8ca7502b02645a07b0290d46026a00",
       "convert_fee_bips": 0.0,
-      "end_date": "2026-10-28T18:00:00Z",
+      "end_date": "2026-10-29T03:59:00Z",
       "structural_discount_expected": false,
-      "discovered_at": null,
+      "discovered_at": "2026-10-02T02:57:33Z",
       "notes": "Primary example. 5 legs: 50+ bps decrease / 25 bps decrease / No change / 25 bps increase / 50+ bps increase. Not augmented. Taker fee rate 0.05 (Gamma feeSchedule). FOMC decision Oct 28 2026.",
-      "legs": []
+      "legs": [
+        {
+          "leg_id": "50-bps-decrease",
+          "label": "50+ bps decrease",
+          "yes_token_id": "17010377994663817312158123655937348199252960045746746128731746451645055725586",
+          "no_token_id": "61725366781282351729996972759460154434089275036953062948669003249092837754960",
+          "condition_id": "0xa69ef420d8b4075ad8ba8611d02c63cb2ece46f5c8c643af223c272689b0c96f",
+          "question": "Will the Fed decrease interest rates by 50+ bps after the October 2026 meeting?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-06-17T23:05:57.351632Z",
+          "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2026 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 27-28, 2026 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.",
+          "fee_schedule": {
+            "rate": 0.05,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "25-bps-decrease",
+          "label": "25 bps decrease",
+          "yes_token_id": "33268510350568915228897273528353467773422190590579607471427765079749830445947",
+          "no_token_id": "110888499829195123034987289109543572302716575133123608254293945182185650232552",
+          "condition_id": "0x9cf563d7b55aa9aa876d5d7e55126347eee473f0ae56d799e325fdef2bf25297",
+          "question": "Will the Fed decrease interest rates by 25 bps after the October 2026 meeting?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-06-17T23:05:57.567846Z",
+          "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2026 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 27-28, 2026 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.",
+          "fee_schedule": {
+            "rate": 0.05,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "no-change",
+          "label": "No change",
+          "yes_token_id": "111061902544814266207267295505639408607400625795891618462682726460921782993748",
+          "no_token_id": "42038775866198212615491650114881818219665139981763207699110491615333273795415",
+          "condition_id": "0xdf9bf27ee5757c55b44b8b9826ddc9ec3a8809aa3278634c45edbb7fc8f1a3e3",
+          "question": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-06-17T23:05:57.720052Z",
+          "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2026 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 27-28, 2026 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.",
+          "fee_schedule": {
+            "rate": 0.05,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "25-bps-increase",
+          "label": "25 bps increase",
+          "yes_token_id": "55159722761418013044126414276680602270318000841690689684819994448621694923050",
+          "no_token_id": "78632395083310670734315205502061249602319069653915932320155846460019107676757",
+          "condition_id": "0x12aa13b3da17ceae1b0a59b5d5b77121e91bb79b4bb0b52bf6543ed3f8d0953b",
+          "question": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-06-17T23:05:57.870064Z",
+          "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2026 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 27-28, 2026 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.",
+          "fee_schedule": {
+            "rate": 0.05,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "50-bps-increase",
+          "label": "50+ bps increase",
+          "yes_token_id": "18246296022868501258060085368606280205967114341141276439803424448463050819498",
+          "no_token_id": "41864497411878191766967581422432961750808440991174085516384293402629587721839",
+          "condition_id": "0xde5d75ab7702875623ba509bc923241e1211da74a113521b3b70ddac930d7316",
+          "question": "Will the Fed increase interest rates by 50+ bps after the October 2026 meeting?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-06-17T23:05:58.026445Z",
+          "rules": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal funds range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2026 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 27-28, 2026 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.",
+          "fee_schedule": {
+            "rate": 0.05,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        }
+      ],
+      "excluded": []
     },
     {
       "basket_id": "balance-of-power-2026",
       "title": "Balance of Power: 2026 Midterms",
       "event_slug": "balance-of-power-2026-midterms",
-      "event_id": null,
+      "event_id": "32228",
       "slug_template": null,
-      "category": null,
+      "category": "politics",
       "roles": [
         "record",
         "eda",
         "pairing"
       ],
-      "status": "unresolved",
-      "neg_risk": null,
-      "neg_risk_augmented": null,
-      "neg_risk_market_id": null,
+      "status": "active",
+      "neg_risk": true,
+      "neg_risk_augmented": false,
+      "neg_risk_market_id": "0x7b95a46fc059d27ac3404325fd6280974d96949102201de57b8595f802d7fc00",
       "convert_fee_bips": 0.0,
-      "end_date": "2026-11-04T00:00:00Z",
+      "end_date": "2026-11-04T04:59:00Z",
       "structural_discount_expected": false,
-      "discovered_at": null,
+      "discovered_at": "2026-10-02T02:57:33Z",
       "notes": "5 legs incl. a named 'Other' outcome: Democrats Sweep / D Senate, R House / R Senate, D House / Republicans Sweep / Other. Taker fee rate 0.04 from Gamma feeSchedule even though created 2025-07-11 (the 'pre-2026-03-30 markets are fee-free' claim does not hold here). Election Nov 3 2026.",
-      "legs": []
+      "legs": [
+        {
+          "leg_id": "democrats-sweep",
+          "label": "Democrats Sweep",
+          "yes_token_id": "34722410608062854697106861099776685947172185964394483545370684749662285977831",
+          "no_token_id": "24483563228660028121020430722896740519524131851526579619586176931221901842798",
+          "condition_id": "0x16c63b7cc37f012b9f59ee164ec03877914c701d06d48291ae8d6fc08a088b0d",
+          "question": "2026 Balance of Power: D Senate, D House",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T20:47:53.368542Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate and the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chambers.\n\nFor determining Senate control, all regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Vacant Senate seats for which no election or special election to fill the seat is scheduled to t",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "d-senate-r-house",
+          "label": "D Senate, R House",
+          "yes_token_id": "70997927349469817841862065582625658840347600365813612622959588796331622340305",
+          "no_token_id": "45720947308530468765087874228584729250108790729495800420104302263408503667446",
+          "condition_id": "0x0808de4f0cfd47947f2d1be51f9a9c52ea0fec76f73a75cfbe79ddec98d8a908",
+          "question": "2026 Balance of Power: D Senate, R House",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T20:47:54.232841Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate and the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chambers.\n\nFor determining Senate control, all regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Vacant Senate seats for which no election or special election to fill the seat is scheduled to t",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "r-senate-d-house",
+          "label": "R Senate, D House",
+          "yes_token_id": "6302359956133594764084277082169634158291609371270652093164054687145970756151",
+          "no_token_id": "558600218792430158020964384658762756367786275998757133304987611939841005404",
+          "condition_id": "0x998bc71817b2d76921d1999ce0f3431cfd5945583667a371280ca2b430b0c06e",
+          "question": "2026 Balance of Power: R Senate, D House",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T20:47:54.792432Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate and the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chambers.\n\nFor determining Senate control, all regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Vacant Senate seats for which no election or special election to fill the seat is scheduled to t",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "republicans-sweep",
+          "label": "Republicans Sweep",
+          "yes_token_id": "103704141773947678931823410030956181918562062788486034785782641603149828893320",
+          "no_token_id": "25869296386911654049715489068824757745174681288397238521780118949553760488529",
+          "condition_id": "0xc5eae79d1ffe716572353962eb926b1e3964c500a4880a7a94f58408218ee76b",
+          "question": "2026 Balance of Power: R Senate, R House",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T20:47:55.353588Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate and the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chambers.\n\nFor determining Senate control, all regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Vacant Senate seats for which no election or special election to fill the seat is scheduled to t",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "other",
+          "label": "Other",
+          "yes_token_id": "35477631289241705233759154026285946627439635224019448868888132647783862821489",
+          "no_token_id": "58154574909590813657096858535882625339077077643653677858955479541043465171526",
+          "condition_id": "0x7987a821b8032824f1805ee39eb5dfb8f64603e4e9e673259eb76f82b439fd3d",
+          "question": "2026 Balance of Power: Other",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T20:47:55.924227Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate and the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chambers.\n\nFor determining Senate control, all regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Vacant Senate seats for which no election or special election to fill the seat is scheduled to t",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        }
+      ],
+      "excluded": []
     },
     {
       "basket_id": "house-2026",
       "title": "Which party will win the House in 2026?",
       "event_slug": "which-party-will-win-the-house-in-2026",
-      "event_id": null,
+      "event_id": "32225",
       "slug_template": null,
-      "category": null,
+      "category": "politics",
       "roles": [
         "record",
         "pairing"
       ],
-      "status": "unresolved",
-      "neg_risk": null,
-      "neg_risk_augmented": null,
-      "neg_risk_market_id": null,
+      "status": "active",
+      "neg_risk": true,
+      "neg_risk_augmented": true,
+      "neg_risk_market_id": "0xd4ec843b5228dfe0779147cf13ca9954bc22edc63876954dc2fb95fcee42ef00",
       "convert_fee_bips": 0.0,
-      "end_date": "2026-11-04T00:00:00Z",
-      "structural_discount_expected": false,
-      "discovered_at": null,
+      "end_date": "2026-11-04T04:59:00Z",
+      "structural_discount_expected": true,
+      "discovered_at": "2026-10-02T02:57:34Z",
       "notes": "n=2 sanity basket and pairing leg for the Balance-of-Power marginal identity.",
-      "legs": []
+      "legs": [
+        {
+          "leg_id": "democratic-party",
+          "label": "Democratic Party",
+          "yes_token_id": "83247781037352156539108067944461291821683755894607244160607042790356561625563",
+          "no_token_id": "33156410999665902694791064431724433042010245771106314074312009703157423879038",
+          "condition_id": "0xd5d9fc47718bd553592d126b1fa5e87183d27f3936975b0c04cc0f2dec1f1bb4",
+          "question": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T19:29:37.755178Z",
+          "rules": "This market will resolve according to the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chamber.\n\nAll House elections in the 2026 United States midterm election that elect voting members and determine representation in the upcoming 120th Congress are included. Where a seat is decided by a runoff, the runoff result will determine attribution of that seat.\n\nSeats are attributed to the party under which the member was elected. If a member-elect changes party affiliation, or vacates their seat, between election day and the formal organization of Congress, the seat is attributed to the party under which the member was elected.\n\nHouse members elected as independents who formally caucus with, or, for newly elected members, who announce their intent to caucus with, a party are included in that party’s count. If the caucus decisions of members of the House elected as independents cannot be determined on the date of the election, this market may remain open until the earlier of (i) an ",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "republican-party",
+          "label": "Republican Party",
+          "yes_token_id": "65139230827417363158752884968303867495725894165574887635816574090175320800482",
+          "no_token_id": "17371217118862125782438074585166210555214661810823929795910191856905580975576",
+          "condition_id": "0x4e4f77e7dbf4cab666e9a1943674d7ae66348e862df03ea6f44b11eb95731928",
+          "question": "Will the Republican Party control the House after the 2026 Midterm elections?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T19:29:38.154529Z",
+          "rules": "This market will resolve according to the party that wins control of the United States House of Representatives in the 2026 United States midterm election.\n\nA party wins control of the United States House of Representatives if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the chamber will be deemed controlled by the party with which the first elected Speaker of the House of the Congress that convenes after the 2026 midterm election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chamber.\n\nAll House elections in the 2026 United States midterm election that elect voting members and determine representation in the upcoming 120th Congress are included. Where a seat is decided by a runoff, the runoff result will determine attribution of that seat.\n\nSeats are attributed to the party under which the member was elected. If a member-elect changes party affiliation, or vacates their seat, between election day and the formal organization of Congress, the seat is attributed to the party under which the member was elected.\n\nHouse members elected as independents who formally caucus with, or, for newly elected members, who announce their intent to caucus with, a party are included in that party’s count. If the caucus decisions of members of the House elected as independents cannot be determined on the date of the election, this market may remain open until the earlier of (i) an ",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        }
+      ],
+      "excluded": [
+        {
+          "label": "Party A",
+          "condition_id": "0xa06d946799f30a8cf93ad5c2b9af6072ecac4ee5c9991c77490a7fc20ae7cc5c",
+          "yes_token_id": "70303402279443140172926218682114579985324187231253704051483086965820158099590",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party B",
+          "condition_id": "0xad6bb73233357873983ffa565b5be5206e8debead67cc9e23af5fbd7c8409060",
+          "yes_token_id": "81979431255219199651248841892701491486178820308435482490575589280083789494850",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party C",
+          "condition_id": "0x3f85f441f4606b4b1daaef0529b85989f4d07e18f2396bda2cc36124e2bb28d7",
+          "yes_token_id": "11243218298534683369174318398350176578601931808194431771228447480692855916349",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party D",
+          "condition_id": "0x7e21279710b84fe0d4319ffd965878fc4208561221866f2f451a8fc50e7a6290",
+          "yes_token_id": "28824300090638744780625607578785524408357468113563177705145298704900471236173",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party E",
+          "condition_id": "0x242c2791f1ec41121f7cb44ef421688cb80b4a93753205129fecb567f6487265",
+          "yes_token_id": "33290843110504336429428398944925000210037606347547982472593935195439193313628",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party F",
+          "condition_id": "0x6b4403f90a5fbc712f82c9ffd99401e1cadf9391c2f0505c408d288b49f67d77",
+          "yes_token_id": "22410429510894424384809137049030330156217256544780881049872554028009109432410",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Other",
+          "condition_id": "0xc2f2e988a909add725da525f4056ffdcfd64e951427199ac176967cc18f98edb",
+          "yes_token_id": "32806512678351792960664166512761758085909980077229801614845545250268642481454",
+          "reason": "inactive_other"
+        }
+      ]
     },
     {
       "basket_id": "senate-2026",
       "title": "Which party will win the Senate in 2026?",
       "event_slug": "which-party-will-win-the-senate-in-2026",
-      "event_id": null,
+      "event_id": "32224",
       "slug_template": null,
-      "category": null,
+      "category": "politics",
       "roles": [
         "record",
         "pairing"
       ],
-      "status": "unresolved",
-      "neg_risk": null,
-      "neg_risk_augmented": null,
-      "neg_risk_market_id": null,
+      "status": "active",
+      "neg_risk": true,
+      "neg_risk_augmented": true,
+      "neg_risk_market_id": "0x22725f09e6a3f61882a1fd2ab4d044dc609767099b539b47053d9d71b5ae6a00",
       "convert_fee_bips": 0.0,
-      "end_date": "2026-11-04T00:00:00Z",
-      "structural_discount_expected": false,
-      "discovered_at": null,
+      "end_date": "2026-11-04T04:59:00Z",
+      "structural_discount_expected": true,
+      "discovered_at": "2026-10-02T02:57:35Z",
       "notes": "n=2; pairing leg. Senate-control resolution rules (VP tie-break, independents) must be compared with Balance of Power before treating the identity as exact.",
-      "legs": []
+      "legs": [
+        {
+          "leg_id": "democratic-party",
+          "label": "Democratic Party",
+          "yes_token_id": "113287701564209339913693347405685749986285999146352375265161592243948562084773",
+          "no_token_id": "107118433685650702332040991454078902188473746599223732907923581436160160612542",
+          "condition_id": "0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3",
+          "question": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T19:22:46.116532Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chamber.\n\nAll regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Runoffs for qualifying elections will determine attribution of the relevant seat, even if they take place after November 2026. Vacant seats for which no election or special election to fill the seat is scheduled to take place in November 2026 as of October 31, 2026 will be treated as held by the party affiliation of the most recent member to hold that seat.\n\nFor seats contested in the specified election, seats are attributed to the party under which the member was elected. If a member-elect changes party affiliation, or vacates their seat, betwe",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "republican-party",
+          "label": "Republican Party",
+          "yes_token_id": "51939490109676186832507970701169130490548061087912630009168726706475001411420",
+          "no_token_id": "108587038225191871355030577171066853142535232042155117887981453750193713427381",
+          "condition_id": "0x86bfb53af7250a40928975c551d12c185b762fa4ce0b40c6a64a50c946d72587",
+          "question": "Will the Republican Party control the Senate after the 2026 Midterm elections?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2025-07-11T19:22:47.043703Z",
+          "rules": "This market will resolve according to the party that wins control of the United States Senate in the 2026 United States midterm election.\n\nA party wins control of the United States Senate if it wins a majority of the chamber’s voting seats. If no party wins a majority of voting seats, the party that wins control of the chamber is the party that wins half of the voting seats and holds the Vice Presidency. If the outcome remains ambiguous after applying the above criteria, the chamber will be deemed controlled by the party with which the first selected President Pro Tempore of the Congress that convenes after the specified election is affiliated.\n\nThe following rules govern the counting of seats for determining which party wins control of the chamber.\n\nAll regular and special Senate elections that determine representation in the upcoming 120th Congress and are scheduled to take place in November 2026 as of October 31, 2026 are included. Runoffs for qualifying elections will determine attribution of the relevant seat, even if they take place after November 2026. Vacant seats for which no election or special election to fill the seat is scheduled to take place in November 2026 as of October 31, 2026 will be treated as held by the party affiliation of the most recent member to hold that seat.\n\nFor seats contested in the specified election, seats are attributed to the party under which the member was elected. If a member-elect changes party affiliation, or vacates their seat, betwe",
+          "fee_schedule": {
+            "rate": 0.04,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        }
+      ],
+      "excluded": [
+        {
+          "label": "Party A",
+          "condition_id": "0x75e8380ff28ca9f077a37235d149f782bd859060e4c9e5c4d43742633e9dfcf2",
+          "yes_token_id": "101013678279667053072299759176727232476254933885205251482758940017727056216936",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party B",
+          "condition_id": "0x7ede7e291acb0c557bc00fdf3076de3939bddf3245b7444aa0a72874b7c80871",
+          "yes_token_id": "17291306702481518322922293085189440199102471520907223012215450959650015362095",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party C",
+          "condition_id": "0x5e5c207df9256248e8f0c2a6c4fe767e3ecc8f04d1bedfc41606dd5732c44f32",
+          "yes_token_id": "84564220048904518210324803720513259790779599835942746260012094389283820078171",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party D",
+          "condition_id": "0x8cb80ba706463194218b14ec9402d2fde98986ee15a33843479767ab8a17afb8",
+          "yes_token_id": "20973107838880033948621714653691397188129037926491564250266623335824655911513",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party E",
+          "condition_id": "0x86567e2750273cc3cad8614545980b697263b93f860bbfa44e762974dae9a21e",
+          "yes_token_id": "37213040687057321509708524169104399446447904137994813725092448952175384806008",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Party F",
+          "condition_id": "0xa797f7270ea01c88112be7a9f5698fe290972f96110fdebd827d569e574257ee",
+          "yes_token_id": "101373114800278906076148182815886141420716368951991098225092292069317856261450",
+          "reason": "placeholder"
+        },
+        {
+          "label": "Other",
+          "condition_id": "0x9e856e1f904ce07e3b55c020ae515b031d28230d17274c6d92eaea466334e6a5",
+          "yes_token_id": "23633932719235142872499908336820535133005906954156117997533824326101321643082",
+          "reason": "inactive_other"
+        }
+      ]
     },
     {
       "basket_id": "mlb-ws-2026",
       "title": "MLB World Series Champion 2026",
       "event_slug": "mlb-world-series-champion-2026",
-      "event_id": null,
+      "event_id": "179312",
       "slug_template": null,
-      "category": null,
+      "category": "sports",
       "roles": [
         "record",
         "eda"
       ],
-      "status": "unresolved",
-      "neg_risk": null,
-      "neg_risk_augmented": null,
-      "neg_risk_market_id": null,
+      "status": "active",
+      "neg_risk": true,
+      "neg_risk_augmented": true,
+      "neg_risk_market_id": "0x85de20785f24956ff4ce1471e80f7d379d97f3fb8a20fb5dd881d03aac38df00",
       "convert_fee_bips": 0.0,
-      "end_date": "2026-11-01T00:00:00Z",
-      "structural_discount_expected": false,
-      "discovered_at": null,
+      "end_date": "2026-10-31T23:55:00Z",
+      "structural_discount_expected": true,
+      "discovered_at": "2026-10-02T02:57:35Z",
       "notes": "Many-leg stress test: 31 markets, 21 already closed (eliminated teams resolved NO), augmented event. Sports taker fee 0.03 (created 2026-01-21). Dust legs sit at the 0.001 tick.",
-      "legs": []
+      "legs": [
+        {
+          "leg_id": "new-york-yankees",
+          "label": "New York Yankees",
+          "yes_token_id": "52854035362787091895017612076763457120573181014952605669517525908999466984865",
+          "no_token_id": "95543103909155130948704747260000445052441626108012711535497120196961332271236",
+          "condition_id": "0x3df7be753c8b6ebbddf31d6d63535c4b31c836cb25b1a73085508a271bc103db",
+          "question": "Will the New York Yankees win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:36.534621Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "tampa-bay-rays",
+          "label": "Tampa Bay Rays",
+          "yes_token_id": "47619537154464827225570738666275423513741144464229940374555699932743034295206",
+          "no_token_id": "12972183694776856517378634879501709915001116611116827712475548366106177177382",
+          "condition_id": "0x4d9567b9fa71a94b6e43ddb62ea6104cbb01926813938d241cce336bd72a8ba5",
+          "question": "Will the Tampa Bay Rays win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:37.357128Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "cleveland-guardians",
+          "label": "Cleveland Guardians",
+          "yes_token_id": "86836855507912353672331273895741550012643122260675758564432763672972116051156",
+          "no_token_id": "21005232080146912819588519036283574999557774043585211746019489918059412624743",
+          "condition_id": "0x67a229c77a9ac893f3895ed4dd1dfd1f89a6145da408bba530a544ec77ff6bfb",
+          "question": "Will the Cleveland Guardians win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:38.603156Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "chicago-white-sox",
+          "label": "Chicago White Sox",
+          "yes_token_id": "47345805017667669897137395690450353435714129302571040588246790838753631749361",
+          "no_token_id": "84946825393330172889133721169064576656145875807729321440670475462232714064308",
+          "condition_id": "0x7279005cdc5f4533b0cf53ce94a6c4fd43039c721ba39a3ad02dddacabd47d93",
+          "question": "Will the Chicago White Sox win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:39.030354Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "atlanta-braves",
+          "label": "Atlanta Braves",
+          "yes_token_id": "87400549613971964996449731299293585289302880817247437384669548139968257881468",
+          "no_token_id": "29295580868306068896124583600000282365944247641268463074038627370917750913578",
+          "condition_id": "0x7c6d624563d7efee94f7ef54da8d35fd794b3cde9ead02df0d413d6ad3886570",
+          "question": "Will the Atlanta Braves win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:43.075086Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "philadelphia-phillies",
+          "label": "Philadelphia Phillies",
+          "yes_token_id": "56772567436880230751429990016212879028273056769219355099340259163330517784781",
+          "no_token_id": "9870237290570379434160738011729795161085208157636317372132377828721529919464",
+          "condition_id": "0x9e238daa4cc2b89379314f5c1873e3c0d07d26bf2eb69a3d618a7b5d13b165a0",
+          "question": "Will the Philadelphia Phillies win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:43.936776Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "milwaukee-brewers",
+          "label": "Milwaukee Brewers",
+          "yes_token_id": "68495273029336552259622116656826978391613637593537133254546205487243272235948",
+          "no_token_id": "57520402764714032701152091698531154935574080954582774395654458078727078499164",
+          "condition_id": "0x3db74f14fa0c4d8acb19ff4ffa18d523597a8e553ec565d494290a908d99395a",
+          "question": "Will the Milwaukee Brewers win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:45.666164Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "los-angeles-dodgers",
+          "label": "Los Angeles Dodgers",
+          "yes_token_id": "1204155327844132216976037605131756626466220080116229118353112706411786559118",
+          "no_token_id": "65347099416413012038874568960137034756796660297895673058090101511987410403548",
+          "condition_id": "0x749d8eccbc0a99447e71fc5e40a0096842774bef4d5c8838b8adb39af068b3cb",
+          "question": "Will the Los Angeles Dodgers win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:47.404876Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "san-diego-padres",
+          "label": "San Diego Padres",
+          "yes_token_id": "31221080242705278649725019814790252911735511309312424063267127209870268745118",
+          "no_token_id": "77403403357262042499116091970429347185210491161428886619331507282750600367590",
+          "condition_id": "0x99ff023a3b1149189fd0993f5a06b05b59e91d370df456c54db69bbd8875bf65",
+          "question": "Will the San Diego Padres win the 2026 World Series?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-01-21T16:59:47.939976Z",
+          "rules": "This market will resolve according to the team that wins the 2026 MLB World Series. \n\nIf at any point it becomes impossible for a listed team to win the 2026 MLB World Series per the rules of MLB (e.g., they are eliminated in the playoffs), the corresponding market will resolve to “No”.\n\nIf the 2026 MLB season is cancelled, postponed after December 31, 2026 ET, or there is otherwise no winner declared within that timeframe, this market will resolve to “Other”.\n\nThe primary resolution source will be official information from MLB (https://www.mlb.com/); however, a consensus of credible reporting may also be used.",
+          "fee_schedule": {
+            "rate": 0.03,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.25,
+            "source": "gamma_feeSchedule"
+          }
+        }
+      ],
+      "excluded": [
+        {
+          "label": "Toronto Blue Jays",
+          "condition_id": "0x6df5c681e14dadf57c0ba0a7c01d6e2cb04f0f97528e76d39875320aec40fddf",
+          "yes_token_id": "20185194104192616169187819782503597513535305745542761219511845807955606694791",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Baltimore Orioles",
+          "condition_id": "0xae8cf6ba7bd936d12c4c77b77b800dc378a76f02d0276fbc1dc1932f01f8eb9e",
+          "yes_token_id": "76901108251634167363891633800845596864827549489351737120636456747135280488503",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Boston Red Sox",
+          "condition_id": "0x3e38887e936b8fedd5373852777e7a3e90805affd8139971ebeb4b4956f000f5",
+          "yes_token_id": "49490029022429715624870536101813422563892045373640045791646802985069593764860",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Minnesota Twins",
+          "condition_id": "0xe4d4d5e3f6a9cc989d05679a66b3f871ba9075155e4e37dac9f684623e501222",
+          "yes_token_id": "6604113814542536673704143631771111787685175461609211283398901161950419015936",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Detroit Tigers",
+          "condition_id": "0xb6fbcf89aba1425be426b04cc001cdee86672e181ef4d665a39ed980300e4f45",
+          "yes_token_id": "73079336216142355130297581666318754750585979286739296068718695540025842403880",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Kansas City Royals",
+          "condition_id": "0xf134705aea567d66f664016d8522ef98e42aefe6a305c22447695a9462857ccd",
+          "yes_token_id": "91634061490645811181653965731312608248831576918658803735251578126864075665673",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Houston Astros",
+          "condition_id": "0x6470402973d292487fba2f61fd46967707b8327b9eab38a759da5ca5dc9ccec4",
+          "yes_token_id": "12405032278435739429869831881260155009376889991681874342969262166150128334633",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Seattle Mariners",
+          "condition_id": "0x8a638b539c43375ea04e0e2501f4a877df4ab35ae67a1f60d0e034d75c8c38ef",
+          "yes_token_id": "63091623343687297303606592004867326730200634937409195873045953355010416684623",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Los Angeles Angels",
+          "condition_id": "0x36f3d99fb629ebbad8bc559f922da1b1e8333496fe6322308bff647926ac15f0",
+          "yes_token_id": "98433436403859645895516883398074218228334495302057009353814218199667520483542",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Texas Rangers",
+          "condition_id": "0xa9a6f91142311378d1227a7b245069ecca68e7cfc825db8613d9bb0c8c42d3a1",
+          "yes_token_id": "86751823627609068424601499935843524300516582275640754782521418387536707538823",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Athletics",
+          "condition_id": "0x618f23aef4bb8eb98a292a0674ed5aee012164f9a762e4bc7f9a2929aa3620d1",
+          "yes_token_id": "61205363034121033512713278910181337951626670505873591541465889328847200773098",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "New York Mets",
+          "condition_id": "0x98b595f40feccf49ded360d1eb15b9bb81041cc6006da00441a743dcef74f0e7",
+          "yes_token_id": "54864064227501100990355740632429843724001886102202092784644764240142537488712",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Miami Marlins",
+          "condition_id": "0xa5f1c7110b05fde645258c7c9e58d3ddbec94631db35b22f7a02db94d4571a29",
+          "yes_token_id": "5703581201154376560187680422416496828142499508237498193695565902061790054297",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Washington Nationals",
+          "condition_id": "0x99b0984b690ad49fb2bdef1d31dc398516d3318740c8595995bd37539d49afce",
+          "yes_token_id": "16911107708847456121558507654684722945620316418458350333840821518727431940890",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "St. Louis Cardinals",
+          "condition_id": "0x728ed3e64f1f6b67d9b3dcd545ae574aaf0dfd3b0fb6df433d0c07c253981ec0",
+          "yes_token_id": "70046809005614326654993856784038215986843482626383701474756417133141056424411",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Chicago Cubs",
+          "condition_id": "0xae0363bfe26b7de87f4526c47d5de9b324bab3d14690112bd89b34c9ed3552fc",
+          "yes_token_id": "11940406787186341071755148448116745833167346421729699368674725740151230699960",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Cincinnati Reds",
+          "condition_id": "0xf9a6f017f72960b267bd398f32f4f4b20a163586ba49930e3533f8bd003dd507",
+          "yes_token_id": "45419222421992302132670848905085985461062585520073966492662753391395023875263",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Pittsburgh Pirates",
+          "condition_id": "0x598654e5e8ad06b44107cb541773c459580dfc208fc74e4694d1ada41d679c1d",
+          "yes_token_id": "68148187469130365236681943682544881635278191262882781922055003569135329235835",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "San Francisco Giants",
+          "condition_id": "0x20ad75028f28b5bced0e807f25289a57ea8060ddd716a60bafb9eba1cf0e58e9",
+          "yes_token_id": "59657512225044489496756208154412529590157701867107738131167134756269686368529",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Arizona Diamondbacks",
+          "condition_id": "0xacbb6cf8293c413dd27561009e7fedce5eea0d6914f5f94fc2bb81d08b60be3e",
+          "yes_token_id": "82765660089439524528753025351479654350247836823710442673663755002245167474663",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Colorado Rockies",
+          "condition_id": "0x190d98a8009045e55fdef0923372d308086469ba1c5286ea5a76a744f6496fa0",
+          "yes_token_id": "45314100509173758234914855155407674158747686578732996927172722433631517363211",
+          "reason": "resolved_no"
+        },
+        {
+          "label": "Other",
+          "condition_id": "0x5323d433b730a92f0cf0a354f45d6e4ea341ceff08335d58306b70d6ce563a5f",
+          "yes_token_id": "25885770219454165659771707653039999976401817187157830355292646929900619769908",
+          "reason": "inactive_other"
+        }
+      ]
     },
     {
       "basket_id": "btc-daily",
-      "title": "Bitcoin price on {date}?",
-      "event_slug": null,
-      "event_id": null,
+      "title": "Bitcoin price on October 3?",
+      "event_slug": "bitcoin-price-on-october-3-2026",
+      "event_id": "1086121",
       "slug_template": "bitcoin-price-on-{month}-{day}-{year}",
       "category": "crypto",
       "roles": [
         "optional"
       ],
-      "status": "unresolved",
-      "neg_risk": null,
-      "neg_risk_augmented": null,
-      "neg_risk_market_id": null,
+      "status": "active",
+      "neg_risk": true,
+      "neg_risk_augmented": false,
+      "neg_risk_market_id": "0x7c77079091a298e1df6ff85fcbb5ed7faf4d47abc8c483a71676d35fb4806500",
       "convert_fee_bips": 0.0,
-      "end_date": null,
+      "end_date": "2026-10-03T16:00:00Z",
       "structural_discount_expected": false,
-      "discovered_at": null,
+      "discovered_at": "2026-10-02T02:57:36Z",
       "notes": "Optional crypto basket (pro-tip 2). Rolls daily; carries the highest taker fee rate (0.07). Use discovery add --slug-template ... --date YYYY-MM-DD.",
-      "legs": []
+      "legs": [
+        {
+          "leg_id": "76-000",
+          "label": "<76,000",
+          "yes_token_id": "32098039966392436876365044708801295624696132503087188046105406363740486066823",
+          "no_token_id": "50203114741097460435819381816783688454828334094783202590679650128219730665615",
+          "condition_id": "0xbde661710532d882dc1ed45ec97220d2331e526fded07a8fb4ae497d82d1d94e",
+          "question": "Will the price of Bitcoin be less than $76,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:01.026488Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "76-000-78-000",
+          "label": "76,000-78,000",
+          "yes_token_id": "82919527777399123034798866816250907190584041526397604629703111406660461391889",
+          "no_token_id": "51135276447732235345031458837879587356996486993874299081749431845846264218356",
+          "condition_id": "0x81db14d9f6a41ee1839c278e1c5ddbbea05d9a4721b6d0ba5460d34a5c3d282b",
+          "question": "Will the price of Bitcoin be between $76,000 and $78,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:01.182163Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "78-000-80-000",
+          "label": "78,000-80,000",
+          "yes_token_id": "85223562094564619295735332348405973039872014369816706108572062977252906187823",
+          "no_token_id": "19207828530544236451316092726049058102794761886575520936661448655666582938092",
+          "condition_id": "0x700067a6c3438695912f0c3029b6474fbfc032dec1192d06ac0c3095d149eb87",
+          "question": "Will the price of Bitcoin be between $78,000 and $80,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:01.413026Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "80-000-82-000",
+          "label": "80,000-82,000",
+          "yes_token_id": "57787124478355818311005607226676645849296566087369570413835571367845121928010",
+          "no_token_id": "30803786245468036651599266868518202219392746708974324711131134215546254997917",
+          "condition_id": "0xe60036d06225516df06da4c879b1a5209c6cd3abf88ad4ff0d7c1faecc6608ca",
+          "question": "Will the price of Bitcoin be between $80,000 and $82,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:01.590147Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "82-000-84-000",
+          "label": "82,000-84,000",
+          "yes_token_id": "19519995028108155900702180828388139651460523162739119716382860941563322635896",
+          "no_token_id": "9768512261664093295183961788159209623206474105511889930048456437224319392148",
+          "condition_id": "0xa8aa80db3b475d8a65473029c334c653fb1e73d00207724031edc714b4bcc774",
+          "question": "Will the price of Bitcoin be between $82,000 and $84,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:01.784066Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "84-000-86-000",
+          "label": "84,000-86,000",
+          "yes_token_id": "41240959347457155741693363325166264460023475009290883651090397457515783449418",
+          "no_token_id": "59536704155935600562948082014546123501568584761473659119472391089981767963490",
+          "condition_id": "0x4539eea0277ab3f74cca3cc9b6ccb18f8761b79520f3da44aa1a59457326b367",
+          "question": "Will the price of Bitcoin be between $84,000 and $86,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:02.011996Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "86-000-88-000",
+          "label": "86,000-88,000",
+          "yes_token_id": "61837689057359170280853708169041923646777968769323226809291400315223794689008",
+          "no_token_id": "79639928130046453398246966335064392643327253568029963435736259251253930127745",
+          "condition_id": "0x4453794f9d4c5d36ed07fb1598922896e1a881921b4b14d5fef8d7870ed9a84f",
+          "question": "Will the price of Bitcoin be between $86,000 and $88,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.01,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:02.257985Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "88-000-90-000",
+          "label": "88,000-90,000",
+          "yes_token_id": "105014046632860484348226928626992771623573596102207990515016388331669933072261",
+          "no_token_id": "39826570246331689648672746471069256236110005695999037826308827202559516861174",
+          "condition_id": "0xd6a17f37af707ad179c30bfa39bfcaeb6e2794acf9a7cf7a3dbfefb41d8b5d36",
+          "question": "Will the price of Bitcoin be between $88,000 and $90,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:02.605374Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "90-000-92-000",
+          "label": "90,000-92,000",
+          "yes_token_id": "109285596391609400420809056654410462713871983325044869421702556928090243313730",
+          "no_token_id": "50056148548007468583417104682397416561155846563795811007305092080477929359931",
+          "condition_id": "0x2504e79effe5796e9bed13886598f355e9179d6f826fe2b981ddce81ac506b2f",
+          "question": "Will the price of Bitcoin be between $90,000 and $92,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:02.79256Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "92-000-94-000",
+          "label": "92,000-94,000",
+          "yes_token_id": "8841416089660055986478833123975548029802606335628505894233757891394645543240",
+          "no_token_id": "74823917367414924214848262339934463790212953637448894593530529731157228019412",
+          "condition_id": "0x261f9e48efda18077076f2b461ef555daf0f01ee4f2eef4feb9c8ef7f39fecf1",
+          "question": "Will the price of Bitcoin be between $92,000 and $94,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:02.973733Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        },
+        {
+          "leg_id": "94-000",
+          "label": ">94,000",
+          "yes_token_id": "93613458883338346173539498461335267831835289845575635883277233869309702421368",
+          "no_token_id": "112495143780761619682046980735252061118136523761679661643172907489525229261444",
+          "condition_id": "0x1581d0a353e8adf49a18dc355ddd092809db29d2380bd3ff320d736a70c80e71",
+          "question": "Will the price of Bitcoin be greater than $94,000 on October 3?",
+          "active": true,
+          "accepting_orders": true,
+          "closed": false,
+          "is_other": false,
+          "is_placeholder": false,
+          "tick_size": 0.001,
+          "min_order_size": 5.0,
+          "market_version": "v1",
+          "created_at": "2026-09-26T16:00:03.152297Z",
+          "rules": "This market will resolve according to the final \"Close\" price of the Binance 1 minute candle for BTC/USDT 12:00 in the ET timezone (noon) on the date specified in the title. Otherwise, this market will resolve to \"No\".\n\nThe resolution source for this market is Binance, specifically the BTC/USDT \"Close\" prices currently available at https://www.binance.com/en/trade/BTC_USDT with \"1m\" and \"Candles\" selected on the top bar.\n\nIf the reported value falls exactly between two brackets, then this market will resolve to the higher range bracket.\n\nPlease note that this market is about the price according to Binance BTC/USDT, not according to other exchanges or trading pairs.",
+          "fee_schedule": {
+            "rate": 0.07,
+            "exponent": 1.0,
+            "taker_only": true,
+            "rebate_rate": 0.2,
+            "source": "gamma_feeSchedule"
+          }
+        }
+      ],
+      "excluded": []
     }
   ],
   "pairings": [
