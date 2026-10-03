@@ -1343,10 +1343,23 @@
      "31221080242705278649725019814790252911735511309312424063267127209870268745118"
     ]
    },
-   "n_frames": 0,
+   "n_frames": 27069,
    "n_dropped": 0,
-   "reconnects": 0,
-   "files": [],
+   "reconnects": 2,
+   "files": [
+    {
+     "path": "raw/2026-10-02/23-20261002T235623Z-b964.jsonl.gz",
+     "bytes": 588631,
+     "lines": 6266,
+     "sha256": null
+    },
+    {
+     "path": "raw/2026-10-03/00-20261002T235623Z-b964.jsonl.gz",
+     "bytes": 2000362,
+     "lines": 20882,
+     "sha256": null
+    }
+   ],
    "code_version": "992e396",
    "websockets_version": "17.1",
    "notes": ""
