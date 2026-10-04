@@ -3482,10 +3482,17 @@
      "31221080242705278649725019814790252911735511309312424063267127209870268745118"
     ]
    },
-   "n_frames": 0,
+   "n_frames": 13737,
    "n_dropped": 0,
    "reconnects": 0,
-   "files": [],
+   "files": [
+    {
+     "path": "raw/2026-10-04/21-20261004T211446Z-2096.jsonl.gz",
+     "bytes": 1403967,
+     "lines": 13762,
+     "sha256": null
+    }
+   ],
    "code_version": "96fba77",
    "websockets_version": "17.1",
    "notes": ""
