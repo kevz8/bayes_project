@@ -4307,10 +4307,23 @@
      "31221080242705278649725019814790252911735511309312424063267127209870268745118"
     ]
    },
-   "n_frames": 0,
+   "n_frames": 27335,
    "n_dropped": 0,
    "reconnects": 0,
-   "files": [],
+   "files": [
+    {
+     "path": "raw/2026-10-05/13-20261005T135738Z-0678.jsonl.gz",
+     "bytes": 315549,
+     "lines": 2905,
+     "sha256": null
+    },
+    {
+     "path": "raw/2026-10-05/14-20261005T135738Z-0678.jsonl.gz",
+     "bytes": 2422849,
+     "lines": 24455,
+     "sha256": null
+    }
+   ],
    "code_version": "bcba90e",
    "websockets_version": "17.1",
    "notes": ""
