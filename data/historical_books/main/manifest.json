@@ -6254,10 +6254,17 @@
      "31221080242705278649725019814790252911735511309312424063267127209870268745118"
     ]
    },
-   "n_frames": 0,
+   "n_frames": 30282,
    "n_dropped": 0,
-   "reconnects": 0,
-   "files": [],
+   "reconnects": 1,
+   "files": [
+    {
+     "path": "raw/2026-10-07/06-20261007T060011Z-60e1.jsonl.gz",
+     "bytes": 2939991,
+     "lines": 30334,
+     "sha256": null
+    }
+   ],
    "code_version": "c252732",
    "websockets_version": "17.1",
    "notes": ""
