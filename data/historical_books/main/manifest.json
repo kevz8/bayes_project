@@ -6620,10 +6620,23 @@
      "31221080242705278649725019814790252911735511309312424063267127209870268745118"
     ]
    },
-   "n_frames": 0,
+   "n_frames": 29213,
    "n_dropped": 0,
    "reconnects": 0,
-   "files": [],
+   "files": [
+    {
+     "path": "raw/2026-10-07/13-20261007T135247Z-ffea.jsonl.gz",
+     "bytes": 723027,
+     "lines": 6732,
+     "sha256": null
+    },
+    {
+     "path": "raw/2026-10-07/14-20261007T135247Z-ffea.jsonl.gz",
+     "bytes": 2247418,
+     "lines": 22512,
+     "sha256": null
+    }
+   ],
    "code_version": "4133ad1",
    "websockets_version": "17.1",
    "notes": ""
