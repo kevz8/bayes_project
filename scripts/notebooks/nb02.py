@@ -141,11 +141,11 @@ try:
     arb = run_backtest(live, RunConfig(strategy="arb", exec=dataclasses.replace(base, gate="arb_only", exit_policy="hold")))
     bs = R.band_stats(R.book_sums(BASKET, cfg)[0], ds.basket)
     live_row = {"hours": live.info.hours, "arb trades": len(arb.trades), "min S_ask": bs["min S_ask"], "max S_bid": bs["max S_bid"],
-                "median n-leg spread": bs["median spread_sum"]}
+                "median n-leg spread": bs["median spread_sum"], "share S_ask<1": bs["share S_ask<1"],
+                "share S_bid>1": bs["share S_bid>1"]}
     display(Markdown(live.info.banner_markdown()))
-    display(Markdown(f"Cross-check on **{live_row['hours']:.1f} hours of recorded live order books**: the cheapest a full YES set ever cost was "
-                     f"${live_row['min S_ask']:.3f} and a full set sold for at most ${live_row['max S_bid']:.3f}, so no risk-free trade existed "
-                     f"({live_row['arb trades']} found)."))
+    display(Markdown("Cross-check: " + R.band_sentence(live_row["hours"], live_row["min S_ask"], live_row["max S_bid"],
+                                                       live_row["share S_ask<1"], live_row["share S_bid>1"], live_row["arb trades"])))
 except DataUnavailable:
     live_row = None
 """),

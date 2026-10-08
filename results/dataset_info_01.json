@@ -28,17 +28,17 @@
     "Execution books are MODELLED: per-leg spread 50-bps-decrease=1 tick(s), 25-bps-decrease=1 tick(s), no-change=1 tick(s), 25-bps-increase=1 tick(s), 50-bps-increase=1 tick(s) (default 1 tick)."
    ],
    "synthetic": false,
-   "code_version": "ee41431"
+   "code_version": "c0012d6"
   },
   {
    "kind": "real_books",
    "basket_id": "fed-oct-2026",
    "title": "Fed Decision in October?",
    "t_start": "2026-10-01T22:30:10",
-   "t_end": "2026-10-02T06:55:46",
-   "hours": 6.440325246666667,
-   "n_rows": 3130,
-   "n_sessions": 6,
+   "t_end": "2026-10-08T08:19:51",
+   "hours": 151.5875480069444,
+   "n_rows": 93179,
+   "n_sessions": 82,
    "sources": [
     {
      "group": "main",
@@ -46,15 +46,13 @@
     }
    ],
    "seed": null,
-   "notes": [
-    "Only 6.4 h of live books so far (recording continues in \u22642 h chunks); treat backtest statistics on this sample as anecdotal."
-   ],
+   "notes": [],
    "synthetic": false,
-   "code_version": "ee41431"
+   "code_version": "c0012d6"
   }
  ],
  "synthetic": false,
- "code_version": "ee41431",
+ "code_version": "c0012d6",
  "basket_stats": [
   {
    "basket": "fed-oct-2026",
@@ -86,12 +84,12 @@
   },
   {
    "basket": "balance-of-power-2026",
-   "spread_sum": 0.03300000000000003,
+   "spread_sum": 0.03300000000000014,
    "spread source": "recorded books",
-   "fee/unit F": 0.023015231339205484,
-   "round-trip hurdle": 0.07826744093897937,
+   "fee/unit F": 0.023015231339205487,
+   "round-trip hurdle": 0.07826744093897944,
    "sd \u03a3P (1-min)": 0.013554563915916498,
-   "ECR = sd/hurdle": 0.17318266386765108
+   "ECR = sd/hurdle": 0.1731826638676509
   },
   {
    "basket": "house-2026",

@@ -92,10 +92,12 @@
   "n_failed_entries": 0
  },
  "live_books": {
-  "hours": 6.440325246666667,
+  "hours": 151.5875480069444,
   "arb trades": 0,
-  "min S_ask": 1.013,
-  "max S_bid": 0.99,
-  "median n-leg spread": 0.02299999999999991
+  "min S_ask": 1.001,
+  "max S_bid": 1.0210000000000001,
+  "median n-leg spread": 0.02299999999999991,
+  "share S_ask<1": 0.0,
+  "share S_bid>1": 0.009685556389963991
  }
 }

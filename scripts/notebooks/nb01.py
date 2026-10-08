@@ -118,9 +118,8 @@ books = R.book_sums(BASKET, cfg, grid="10s")
 if books is not None:
     bs = R.band_stats(books[0], basket)
     display(Markdown(books[2].banner_markdown()))
-    display(Markdown(f"In the **live order books** we recorded, buying every outcome always cost at least **${bs['min S_ask']:.3f}** "
-                     f"(more than the $1 payout) and selling every outcome never brought in more than **${bs['max S_bid']:.3f}**, "
-                     "so there was no free money (\"arbitrage\") available."))
+    display(Markdown(R.band_sentence(books[2].hours, bs["min S_ask"], bs["max S_bid"], bs["share S_ask<1"], bs["share S_bid>1"],
+                                     share_beyond_fees=bs["share S_ask<1-fees"] + bs["share S_bid>1+fees"])))
 """),
 ("code", r"""
 row = h.loc[BASKET]

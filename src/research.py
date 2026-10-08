@@ -132,6 +132,29 @@ def band_stats(sums: pd.DataFrame, b: Basket) -> dict[str, float]:
             "min S_ask": float(v["s_ask"].min()), "max S_bid": float(v["s_bid"].max())}
 
 
+def band_sentence(hours: float, min_ask: float, max_bid: float, share_ask_below: float, share_bid_above: float,
+                  arb_trades: int | None = None, share_beyond_fees: float | None = None) -> str:
+    """Plain-language summary of how often the live books left the no-arbitrage band (used by notebooks and README)."""
+    head = f"In {hours:.1f} hours of recorded live order books"
+    if min_ask >= 1 and max_bid <= 1:
+        return (f"{head} a full YES set never cost less than ${min_ask:.3f} and never sold for more than ${max_bid:.3f}: "
+                "no risk-free trade was available.")
+    parts = []
+    if max_bid > 1:
+        parts.append(f"a full YES set sold for more than $1 only {share_bid_above:.1%} of the time (at most ${max_bid:.3f})")
+    if min_ask < 1:
+        parts.append(f"a full YES set cost less than $1 only {share_ask_below:.1%} of the time (at least ${min_ask:.3f})")
+    if arb_trades is not None:
+        tail = ("after taker fees and a half-second order delay the simulator found no profitable risk-free trade."
+                if arb_trades == 0 else f"after taker fees and a half-second order delay the simulator found {arb_trades} "
+                                        "risk-free trades.")
+    elif share_beyond_fees is not None and share_beyond_fees == 0:
+        tail = "and never by more than the taker fees, so there was no free money after costs."
+    else:
+        tail = f"and by more than the taker fees {share_beyond_fees or 0:.2%} of the time."
+    return f"{head} {' and '.join(parts)}; {tail}" if arb_trades is not None else f"{head} {' and '.join(parts)}, {tail}"
+
+
 def hurdle_table(cfg: MarketsConfig, basket_ids: Sequence[str]) -> pd.DataFrame:
     """Round-trip cost hurdle vs typical S excursion (ECR, pro-tip 2), per basket.
 
